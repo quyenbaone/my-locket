@@ -1,0 +1,190 @@
+[
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_empty_friend.png.flat",
+        "source": "com.mylocket.app-main-65:/drawable/empty_friend.png"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_logo.png.flat",
+        "source": "com.mylocket.app-main-65:/drawable/logo.png"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-mdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_welcome.png.flat",
+        "source": "com.mylocket.app-main-65:/drawable/welcome.png"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_grid.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/grid.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/xml_backup_rules.xml.flat",
+        "source": "com.mylocket.app-main-65:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_xcirclered.png.flat",
+        "source": "com.mylocket.app-main-65:/drawable/xcirclered.png"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/xml_data_extraction_rules.xml.flat",
+        "source": "com.mylocket.app-main-65:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_setting.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_setting.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_log_out.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_log_out.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_flash_on.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_flash_on.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_chat.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/chat.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_delele.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_delele.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xxxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_friend_add.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_friend_add.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_back.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/back.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_bling.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_bling.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_check.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_check.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_visibility.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_visibility.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_close.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_close.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_option.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/option.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_next.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_next.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_down.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/down.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_friend.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/friend.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_send.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_send.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_img.jpg.flat",
+        "source": "com.mylocket.app-main-65:/drawable/img.jpg"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_user.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/user.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_capture.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/capture.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_visibility_off.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_visibility_off.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_download.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_download.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-mdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_add.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_add.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_flash_off.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_flash_off.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_camera.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/camera.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_search.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_search.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xxxhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-65:/mipmap-xhdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-63:/drawable_ic_email.xml.flat",
+        "source": "com.mylocket.app-main-65:/drawable/ic_email.xml"
+    }
+]
