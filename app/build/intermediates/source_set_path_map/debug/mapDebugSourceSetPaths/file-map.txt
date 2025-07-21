@@ -1,65 +1,68 @@
-com.mylocket.app-camera-extensions-1.3.4-0 C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\res
-com.mylocket.app-graphics-path-1.0.1-1 C:\Users\cauva\.gradle\caches\8.11.1\transforms\0d47f8c86da3274569ca922df9e9f301\transformed\graphics-path-1.0.1\res
-com.mylocket.app-activity-compose-1.9.0-2 C:\Users\cauva\.gradle\caches\8.11.1\transforms\1cd3c252c96d5627e54b2b8dbc1dc5b6\transformed\activity-compose-1.9.0\res
-com.mylocket.app-camera-view-1.3.4-3 C:\Users\cauva\.gradle\caches\8.11.1\transforms\1d1d7003676c96886e2ade2bf93d9b5d\transformed\camera-view-1.3.4\res
-com.mylocket.app-ui-graphics-release-4 C:\Users\cauva\.gradle\caches\8.11.1\transforms\2b249513f086815155cc8f7b5ea2d826\transformed\ui-graphics-release\res
-com.mylocket.app-appcompat-1.1.0-5 C:\Users\cauva\.gradle\caches\8.11.1\transforms\31488d759c17c5bff595fbfddf1ca4e5\transformed\appcompat-1.1.0\res
-com.mylocket.app-runtime-saveable-release-6 C:\Users\cauva\.gradle\caches\8.11.1\transforms\33bf31e0118d3a8c8486f4c74823c129\transformed\runtime-saveable-release\res
-com.mylocket.app-activity-1.9.0-7 C:\Users\cauva\.gradle\caches\8.11.1\transforms\3437b04f113948a7607ead2aad21d008\transformed\activity-1.9.0\res
-com.mylocket.app-camera-core-1.3.4-8 C:\Users\cauva\.gradle\caches\8.11.1\transforms\385068635a1dff11a8c8d3ac2ade3882\transformed\camera-core-1.3.4\res
-com.mylocket.app-navigation-runtime-2.8.2-9 C:\Users\cauva\.gradle\caches\8.11.1\transforms\3fc4640ec55d07770055787b59727b38\transformed\navigation-runtime-2.8.2\res
-com.mylocket.app-ui-tooling-data-release-10 C:\Users\cauva\.gradle\caches\8.11.1\transforms\42b7aad4bde4cae49e2d438e1ae15bea\transformed\ui-tooling-data-release\res
-com.mylocket.app-navigation-common-2.8.2-11 C:\Users\cauva\.gradle\caches\8.11.1\transforms\4714c2c4785772afef8cf970c676b54e\transformed\navigation-common-2.8.2\res
-com.mylocket.app-core-runtime-2.2.0-12 C:\Users\cauva\.gradle\caches\8.11.1\transforms\4bd142e82ac886f8a2074ba840018fde\transformed\core-runtime-2.2.0\res
-com.mylocket.app-navigation-compose-2.8.2-13 C:\Users\cauva\.gradle\caches\8.11.1\transforms\4f958f74167dd96ac86921626a4f9282\transformed\navigation-compose-2.8.2\res
-com.mylocket.app-camera-camera2-1.3.4-14 C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\res
-com.mylocket.app-profileinstaller-1.3.1-15 C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\res
-com.mylocket.app-foundation-layout-release-16 C:\Users\cauva\.gradle\caches\8.11.1\transforms\5a709cbe5b47c8f57a0089d3ebca1a12\transformed\foundation-layout-release\res
-com.mylocket.app-startup-runtime-1.1.1-17 C:\Users\cauva\.gradle\caches\8.11.1\transforms\601adb4a3dfffac784395bc3272f84f3\transformed\startup-runtime-1.1.1\res
-com.mylocket.app-lifecycle-runtime-release-18 C:\Users\cauva\.gradle\caches\8.11.1\transforms\65863098848d7a179740480f3e743390\transformed\lifecycle-runtime-release\res
-com.mylocket.app-camera-video-1.3.4-19 C:\Users\cauva\.gradle\caches\8.11.1\transforms\68b657de7b69389a4443fd4e0d232082\transformed\camera-video-1.3.4\res
-com.mylocket.app-runtime-release-20 C:\Users\cauva\.gradle\caches\8.11.1\transforms\6caaf3537b62fb776f1efc5c3f9f932d\transformed\runtime-release\res
-com.mylocket.app-lifecycle-viewmodel-compose-release-21 C:\Users\cauva\.gradle\caches\8.11.1\transforms\6dceea46a21e5dd534fd224e7197f8fb\transformed\lifecycle-viewmodel-compose-release\res
-com.mylocket.app-material-ripple-release-22 C:\Users\cauva\.gradle\caches\8.11.1\transforms\6eb35f52b25a786e39abccf136bca749\transformed\material-ripple-release\res
-com.mylocket.app-ui-text-release-23 C:\Users\cauva\.gradle\caches\8.11.1\transforms\73a1a661cd941a480843db084ea012e3\transformed\ui-text-release\res
-com.mylocket.app-lifecycle-livedata-core-ktx-2.8.4-24 C:\Users\cauva\.gradle\caches\8.11.1\transforms\76a2ddb7575827b0fca6537ba4a8c4db\transformed\lifecycle-livedata-core-ktx-2.8.4\res
-com.mylocket.app-activity-ktx-1.9.0-25 C:\Users\cauva\.gradle\caches\8.11.1\transforms\77ba678b849b5513c549ba89dcfc2e49\transformed\activity-ktx-1.9.0\res
-com.mylocket.app-lifecycle-viewmodel-ktx-2.8.4-26 C:\Users\cauva\.gradle\caches\8.11.1\transforms\7814f50ff70fcf43b87e5344bf411745\transformed\lifecycle-viewmodel-ktx-2.8.4\res
-com.mylocket.app-appcompat-resources-1.1.0-27 C:\Users\cauva\.gradle\caches\8.11.1\transforms\7889071ba3890ebaefe32f07672628d9\transformed\appcompat-resources-1.1.0\res
-com.mylocket.app-core-1.13.1-28 C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\res
-com.mylocket.app-lifecycle-process-2.8.4-29 C:\Users\cauva\.gradle\caches\8.11.1\transforms\8331148889f7e804aec4cf00ca25c42b\transformed\lifecycle-process-2.8.4\res
-com.mylocket.app-lifecycle-runtime-ktx-release-30 C:\Users\cauva\.gradle\caches\8.11.1\transforms\8d687ee1f2e2fe068fc7a223b3128910\transformed\lifecycle-runtime-ktx-release\res
-com.mylocket.app-savedstate-1.2.1-31 C:\Users\cauva\.gradle\caches\8.11.1\transforms\90a9f1e8903a349c079fcac356d04f11\transformed\savedstate-1.2.1\res
-com.mylocket.app-camera-lifecycle-1.3.4-32 C:\Users\cauva\.gradle\caches\8.11.1\transforms\91f2db676df85465fda65d71c6bfe225\transformed\camera-lifecycle-1.3.4\res
-com.mylocket.app-ui-test-manifest-1.7.2-33 C:\Users\cauva\.gradle\caches\8.11.1\transforms\936e01c418b18f0e5565af113fb0459c\transformed\ui-test-manifest-1.7.2\res
-com.mylocket.app-customview-poolingcontainer-1.0.0-34 C:\Users\cauva\.gradle\caches\8.11.1\transforms\947843e5e4c848da79940f51850167d2\transformed\customview-poolingcontainer-1.0.0\res
-com.mylocket.app-ui-release-35 C:\Users\cauva\.gradle\caches\8.11.1\transforms\96037b2d2ef2c5ca43f88e50bb09dca5\transformed\ui-release\res
-com.mylocket.app-annotation-experimental-1.4.1-36 C:\Users\cauva\.gradle\caches\8.11.1\transforms\97bd97628643038939361bc7171b8686\transformed\annotation-experimental-1.4.1\res
-com.mylocket.app-ui-geometry-release-37 C:\Users\cauva\.gradle\caches\8.11.1\transforms\9b711c4e3aecaf395d89e32167f2548a\transformed\ui-geometry-release\res
-com.mylocket.app-navigation-runtime-ktx-2.8.2-38 C:\Users\cauva\.gradle\caches\8.11.1\transforms\9ba02d49a57ae75b787a559437c0e3fd\transformed\navigation-runtime-ktx-2.8.2\res
-com.mylocket.app-material3-release-39 C:\Users\cauva\.gradle\caches\8.11.1\transforms\a1a75f374695878f72c8e9be0cd8ad5e\transformed\material3-release\res
-com.mylocket.app-core-ktx-1.13.1-40 C:\Users\cauva\.gradle\caches\8.11.1\transforms\a4871bc00620454f078674f1ce1d1d70\transformed\core-ktx-1.13.1\res
-com.mylocket.app-lifecycle-viewmodel-release-41 C:\Users\cauva\.gradle\caches\8.11.1\transforms\a949d2fa98bad20af6b1de2092dc971e\transformed\lifecycle-viewmodel-release\res
-com.mylocket.app-material-release-42 C:\Users\cauva\.gradle\caches\8.11.1\transforms\ae5cd42d41bb42af9aeea46533612c44\transformed\material-release\res
-com.mylocket.app-lifecycle-livedata-2.8.4-43 C:\Users\cauva\.gradle\caches\8.11.1\transforms\b90eba23102ac86a6f6782f5784970df\transformed\lifecycle-livedata-2.8.4\res
-com.mylocket.app-browser-1.8.0-44 C:\Users\cauva\.gradle\caches\8.11.1\transforms\bb7c253d3b6daff3d96968bd6118ac31\transformed\browser-1.8.0\res
-com.mylocket.app-foundation-release-45 C:\Users\cauva\.gradle\caches\8.11.1\transforms\bff661959ca866cb0cc72f07bc687f81\transformed\foundation-release\res
-com.mylocket.app-savedstate-ktx-1.2.1-46 C:\Users\cauva\.gradle\caches\8.11.1\transforms\c5504a0141a3571ec94eda8145e0f166\transformed\savedstate-ktx-1.2.1\res
-com.mylocket.app-navigation-common-ktx-2.8.2-47 C:\Users\cauva\.gradle\caches\8.11.1\transforms\c64047dcb379b2852c31a7fc41685fdb\transformed\navigation-common-ktx-2.8.2\res
-com.mylocket.app-lifecycle-runtime-compose-release-48 C:\Users\cauva\.gradle\caches\8.11.1\transforms\c71bcb8f1f4f610b566631effd8967bf\transformed\lifecycle-runtime-compose-release\res
-com.mylocket.app-material-icons-core-release-49 C:\Users\cauva\.gradle\caches\8.11.1\transforms\c76e68b84e50e66a2afa44331a9c0132\transformed\material-icons-core-release\res
-com.mylocket.app-ui-util-release-50 C:\Users\cauva\.gradle\caches\8.11.1\transforms\cb618adcc90e1a2ea85352c5f3830c8e\transformed\ui-util-release\res
-com.mylocket.app-lifecycle-viewmodel-savedstate-2.8.4-51 C:\Users\cauva\.gradle\caches\8.11.1\transforms\e31e0353b8349fda75d1283556ab8018\transformed\lifecycle-viewmodel-savedstate-2.8.4\res
-com.mylocket.app-ui-unit-release-52 C:\Users\cauva\.gradle\caches\8.11.1\transforms\e50630b4c3f816a47d5d84a599d82460\transformed\ui-unit-release\res
-com.mylocket.app-emoji2-1.3.0-53 C:\Users\cauva\.gradle\caches\8.11.1\transforms\e66c4f93038914837400f0df3c8df8ad\transformed\emoji2-1.3.0\res
-com.mylocket.app-animation-core-release-54 C:\Users\cauva\.gradle\caches\8.11.1\transforms\e7709e56171a70c1912ebc548a8e47d2\transformed\animation-core-release\res
-com.mylocket.app-animation-release-55 C:\Users\cauva\.gradle\caches\8.11.1\transforms\e8c8e8ed7e0642bb2c1381bb64dcf8a8\transformed\animation-release\res
-com.mylocket.app-lifecycle-livedata-core-2.8.4-56 C:\Users\cauva\.gradle\caches\8.11.1\transforms\eec7db72194765a53daf432cebcbc1a9\transformed\lifecycle-livedata-core-2.8.4\res
-com.mylocket.app-ui-tooling-release-57 C:\Users\cauva\.gradle\caches\8.11.1\transforms\f2098674873188de4ef95090e4cb8963\transformed\ui-tooling-release\res
-com.mylocket.app-ui-tooling-preview-release-58 C:\Users\cauva\.gradle\caches\8.11.1\transforms\f84940f6b0699acc280a6211c75c78f4\transformed\ui-tooling-preview-release\res
-com.mylocket.app-resValues-59 D:\Locker App\MyLocket\app\build\generated\res\resValues\debug
-com.mylocket.app-packageDebugResources-60 D:\Locker App\MyLocket\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.mylocket.app-packageDebugResources-61 D:\Locker App\MyLocket\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.mylocket.app-debug-62 D:\Locker App\MyLocket\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.mylocket.app-debug-63 D:\Locker App\MyLocket\app\src\debug\res
-com.mylocket.app-main-64 D:\Locker App\MyLocket\app\src\main\res
+com.mylocket.app-navigation-runtime-2.8.2-0 C:\Users\cauva\.gradle\caches\8.13\transforms\01a5eddc7c5e0ebdbdd990e543796bf2\transformed\navigation-runtime-2.8.2\res
+com.mylocket.app-camera-camera2-1.3.4-1 C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\res
+com.mylocket.app-profileinstaller-1.3.1-2 C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\res
+com.mylocket.app-material-ripple-release-3 C:\Users\cauva\.gradle\caches\8.13\transforms\04f08fb93e7b9dc3f38f5f7ef8f0d8d8\transformed\material-ripple-release\res
+com.mylocket.app-navigation-runtime-ktx-2.8.2-4 C:\Users\cauva\.gradle\caches\8.13\transforms\08cf390f58373602d27b31a795c6f6bb\transformed\navigation-runtime-ktx-2.8.2\res
+com.mylocket.app-runtime-saveable-release-5 C:\Users\cauva\.gradle\caches\8.13\transforms\0bad4abaa0af6b0f662cf41ca3f95ecd\transformed\runtime-saveable-release\res
+com.mylocket.app-lifecycle-viewmodel-release-6 C:\Users\cauva\.gradle\caches\8.13\transforms\0deb80578ffb00335a97a8d6c9b063ae\transformed\lifecycle-viewmodel-release\res
+com.mylocket.app-camera-extensions-1.3.4-7 C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\res
+com.mylocket.app-ui-release-8 C:\Users\cauva\.gradle\caches\8.13\transforms\16072472e7b9e62a48cbfd92f4afcaed\transformed\ui-release\res
+com.mylocket.app-lifecycle-viewmodel-savedstate-2.8.4-9 C:\Users\cauva\.gradle\caches\8.13\transforms\20b2b236fa48ec15fa407161a4fd051b\transformed\lifecycle-viewmodel-savedstate-2.8.4\res
+com.mylocket.app-foundation-release-10 C:\Users\cauva\.gradle\caches\8.13\transforms\25852131ee2daefc4be3a64a25d9b3ce\transformed\foundation-release\res
+com.mylocket.app-lifecycle-livedata-2.8.4-11 C:\Users\cauva\.gradle\caches\8.13\transforms\25f154daeaf6925d86fc77c2310842a2\transformed\lifecycle-livedata-2.8.4\res
+com.mylocket.app-ui-tooling-data-release-12 C:\Users\cauva\.gradle\caches\8.13\transforms\2a1a571994752eb17dbb5b41a52b73b4\transformed\ui-tooling-data-release\res
+com.mylocket.app-lifecycle-runtime-compose-release-13 C:\Users\cauva\.gradle\caches\8.13\transforms\353c3068826277558e9c1c91ccc1c754\transformed\lifecycle-runtime-compose-release\res
+com.mylocket.app-camera-lifecycle-1.3.4-14 C:\Users\cauva\.gradle\caches\8.13\transforms\36a49852f3183ee2b1e084f1df175e29\transformed\camera-lifecycle-1.3.4\res
+com.mylocket.app-navigation-common-2.8.2-15 C:\Users\cauva\.gradle\caches\8.13\transforms\37f784917e1a63c37ddd171b7367ea7b\transformed\navigation-common-2.8.2\res
+com.mylocket.app-animation-release-16 C:\Users\cauva\.gradle\caches\8.13\transforms\3bf900a947576421f35124389d102f9d\transformed\animation-release\res
+com.mylocket.app-customview-poolingcontainer-1.0.0-17 C:\Users\cauva\.gradle\caches\8.13\transforms\3bfd04f7a6f39cf12d1857f196d0b2fd\transformed\customview-poolingcontainer-1.0.0\res
+com.mylocket.app-lifecycle-viewmodel-ktx-2.8.4-18 C:\Users\cauva\.gradle\caches\8.13\transforms\3eeec5e1a921e1efb8c49915f8cf2703\transformed\lifecycle-viewmodel-ktx-2.8.4\res
+com.mylocket.app-core-ktx-1.13.1-19 C:\Users\cauva\.gradle\caches\8.13\transforms\421d8684d257e28ad0ce0ae4351bb006\transformed\core-ktx-1.13.1\res
+com.mylocket.app-core-runtime-2.2.0-20 C:\Users\cauva\.gradle\caches\8.13\transforms\4614eaf9b77f66948c47f7e7248f4050\transformed\core-runtime-2.2.0\res
+com.mylocket.app-startup-runtime-1.1.1-21 C:\Users\cauva\.gradle\caches\8.13\transforms\4a5a37e63a6c2fc3ee2f06a86877ef17\transformed\startup-runtime-1.1.1\res
+com.mylocket.app-ui-geometry-release-22 C:\Users\cauva\.gradle\caches\8.13\transforms\4a6d4c4a1155eee951a8cc135a6ad653\transformed\ui-geometry-release\res
+com.mylocket.app-ui-unit-release-23 C:\Users\cauva\.gradle\caches\8.13\transforms\4bb1bb494f5f24c12345d34ea3200e39\transformed\ui-unit-release\res
+com.mylocket.app-activity-compose-1.9.0-24 C:\Users\cauva\.gradle\caches\8.13\transforms\4c4fc25019f80b7fe7dc717cf9c2c343\transformed\activity-compose-1.9.0\res
+com.mylocket.app-ui-test-manifest-1.7.2-25 C:\Users\cauva\.gradle\caches\8.13\transforms\4efb430dc3997013a4d6c500467a6201\transformed\ui-test-manifest-1.7.2\res
+com.mylocket.app-appcompat-resources-1.6.1-26 C:\Users\cauva\.gradle\caches\8.13\transforms\55111c6f0853bc3d02ae8398385eb873\transformed\appcompat-resources-1.6.1\res
+com.mylocket.app-lifecycle-livedata-core-ktx-2.8.4-27 C:\Users\cauva\.gradle\caches\8.13\transforms\5754954ec7b3cc14e20ea4508cadb5de\transformed\lifecycle-livedata-core-ktx-2.8.4\res
+com.mylocket.app-emoji2-views-helper-1.3.0-28 C:\Users\cauva\.gradle\caches\8.13\transforms\5a783f8388ab5e1abbf33d984782eaa3\transformed\emoji2-views-helper-1.3.0\res
+com.mylocket.app-coil-base-2.5.0-29 C:\Users\cauva\.gradle\caches\8.13\transforms\5c5e57cc5c42e72653d2e0dcd9000424\transformed\coil-base-2.5.0\res
+com.mylocket.app-material-icons-core-release-30 C:\Users\cauva\.gradle\caches\8.13\transforms\65e10574a315e17ac22276a2fd717e81\transformed\material-icons-core-release\res
+com.mylocket.app-navigation-compose-2.8.2-31 C:\Users\cauva\.gradle\caches\8.13\transforms\724c6e9db5dba81f9018c0b10635f523\transformed\navigation-compose-2.8.2\res
+com.mylocket.app-savedstate-1.2.1-32 C:\Users\cauva\.gradle\caches\8.13\transforms\760e54a1758fa81bb60a15c6b997f2cc\transformed\savedstate-1.2.1\res
+com.mylocket.app-ui-tooling-release-33 C:\Users\cauva\.gradle\caches\8.13\transforms\7ef399d5d29126ab04907a9060372d79\transformed\ui-tooling-release\res
+com.mylocket.app-appcompat-1.6.1-34 C:\Users\cauva\.gradle\caches\8.13\transforms\8738a9b2914d8cfe64b56fdb378e5eb2\transformed\appcompat-1.6.1\res
+com.mylocket.app-ui-util-release-35 C:\Users\cauva\.gradle\caches\8.13\transforms\875b3efda97f5869ca7045dbaa336cf9\transformed\ui-util-release\res
+com.mylocket.app-emoji2-1.3.0-36 C:\Users\cauva\.gradle\caches\8.13\transforms\8a1164071a9ac750213fe19de6842035\transformed\emoji2-1.3.0\res
+com.mylocket.app-activity-ktx-1.9.0-37 C:\Users\cauva\.gradle\caches\8.13\transforms\8cb707eedde07b1ad88987c085fc3590\transformed\activity-ktx-1.9.0\res
+com.mylocket.app-runtime-release-38 C:\Users\cauva\.gradle\caches\8.13\transforms\9a122b86351510db05707a0b5c1d2a15\transformed\runtime-release\res
+com.mylocket.app-camera-video-1.3.4-39 C:\Users\cauva\.gradle\caches\8.13\transforms\9b5e33018bbdb7880b7d47a9b6774c03\transformed\camera-video-1.3.4\res
+com.mylocket.app-lifecycle-process-2.8.4-40 C:\Users\cauva\.gradle\caches\8.13\transforms\9fecc7fbf0d2eb52f0198ffad8c65305\transformed\lifecycle-process-2.8.4\res
+com.mylocket.app-ui-tooling-preview-release-41 C:\Users\cauva\.gradle\caches\8.13\transforms\a53dac1cf28f9d51d756dd910b3ef816\transformed\ui-tooling-preview-release\res
+com.mylocket.app-camera-view-1.3.4-42 C:\Users\cauva\.gradle\caches\8.13\transforms\aa6323a09aff8345a98afe26ce5f4605\transformed\camera-view-1.3.4\res
+com.mylocket.app-annotation-experimental-1.4.1-43 C:\Users\cauva\.gradle\caches\8.13\transforms\aab3e9d9a69ea85a50d97d094a4f6507\transformed\annotation-experimental-1.4.1\res
+com.mylocket.app-material-release-44 C:\Users\cauva\.gradle\caches\8.13\transforms\ab788f6a2a6a3bca9ae0cd4bf3789463\transformed\material-release\res
+com.mylocket.app-savedstate-ktx-1.2.1-45 C:\Users\cauva\.gradle\caches\8.13\transforms\b51595552660cec73c4bfe11e41f6895\transformed\savedstate-ktx-1.2.1\res
+com.mylocket.app-navigation-common-ktx-2.8.2-46 C:\Users\cauva\.gradle\caches\8.13\transforms\bb35ebf0ba9f5a83cf56b67d5021eb4d\transformed\navigation-common-ktx-2.8.2\res
+com.mylocket.app-lifecycle-viewmodel-compose-release-47 C:\Users\cauva\.gradle\caches\8.13\transforms\c232a4d746ff129996433099e98b69d7\transformed\lifecycle-viewmodel-compose-release\res
+com.mylocket.app-lifecycle-livedata-core-2.8.4-48 C:\Users\cauva\.gradle\caches\8.13\transforms\c525b58dca562b51e45b4b68d3879610\transformed\lifecycle-livedata-core-2.8.4\res
+com.mylocket.app-material3-release-49 C:\Users\cauva\.gradle\caches\8.13\transforms\c8fee181df64d1ab73c8df0864ee8b58\transformed\material3-release\res
+com.mylocket.app-browser-1.8.0-50 C:\Users\cauva\.gradle\caches\8.13\transforms\d0303b7db649e5a4a8a0b9e9758edd17\transformed\browser-1.8.0\res
+com.mylocket.app-animation-core-release-51 C:\Users\cauva\.gradle\caches\8.13\transforms\d4fd5ba76c4eb8c013b3aa2eaf53a1fe\transformed\animation-core-release\res
+com.mylocket.app-graphics-path-1.0.1-52 C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\res
+com.mylocket.app-camera-core-1.3.4-53 C:\Users\cauva\.gradle\caches\8.13\transforms\de77843a5fb434b7a43c86502476f23a\transformed\camera-core-1.3.4\res
+com.mylocket.app-fragment-1.3.6-54 C:\Users\cauva\.gradle\caches\8.13\transforms\dfa06862c261ce435d1113f0c0c3ecd9\transformed\fragment-1.3.6\res
+com.mylocket.app-activity-1.9.0-55 C:\Users\cauva\.gradle\caches\8.13\transforms\e94054575993a95207f211b9eeae3275\transformed\activity-1.9.0\res
+com.mylocket.app-core-1.13.1-56 C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\res
+com.mylocket.app-foundation-layout-release-57 C:\Users\cauva\.gradle\caches\8.13\transforms\f4c87ab898b3eebca3f164ddbd3b0c43\transformed\foundation-layout-release\res
+com.mylocket.app-lifecycle-runtime-release-58 C:\Users\cauva\.gradle\caches\8.13\transforms\f5d19b4bd8252c535aaddf49b4d4f90a\transformed\lifecycle-runtime-release\res
+com.mylocket.app-ui-graphics-release-59 C:\Users\cauva\.gradle\caches\8.13\transforms\f9d8ca28ec96a742b335238367457a6f\transformed\ui-graphics-release\res
+com.mylocket.app-ui-text-release-60 C:\Users\cauva\.gradle\caches\8.13\transforms\fad34fc4a22efb3dc267cadc5e5a0830\transformed\ui-text-release\res
+com.mylocket.app-lifecycle-runtime-ktx-release-61 C:\Users\cauva\.gradle\caches\8.13\transforms\fd7987a21af4b69c96efca96c5ba053d\transformed\lifecycle-runtime-ktx-release\res
+com.mylocket.app-resValues-62 D:\Locker App\MyLocket\my-locket\app\build\generated\res\resValues\debug
+com.mylocket.app-packageDebugResources-63 D:\Locker App\MyLocket\my-locket\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.mylocket.app-packageDebugResources-64 D:\Locker App\MyLocket\my-locket\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.mylocket.app-debug-65 D:\Locker App\MyLocket\my-locket\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.mylocket.app-debug-66 D:\Locker App\MyLocket\my-locket\app\src\debug\res
+com.mylocket.app-main-67 D:\Locker App\MyLocket\my-locket\app\src\main\res

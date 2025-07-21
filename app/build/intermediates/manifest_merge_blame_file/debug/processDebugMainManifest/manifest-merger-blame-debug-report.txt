@@ -9,224 +9,224 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-feature
-11-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:5:5-7:36
+11-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:5:5-7:36
 12        android:name="android.hardware.camera"
-12-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:6:9-47
+12-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:6:9-47
 13        android:required="false" />
-13-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:7:9-33
+13-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:7:9-33
 14    <uses-feature android:name="android.hardware.camera.any" />
-14-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:8:5-64
-14-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:8:19-61
+14-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:8:5-64
+14-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:8:19-61
 15
 16    <uses-permission android:name="android.permission.CAMERA" />
-16-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:9:5-65
-16-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:9:22-62
+16-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:9:5-65
+16-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:9:22-62
 17    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-17-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:10:5-71
-17-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:10:22-68
+17-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:10:5-71
+17-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:10:22-68
 18    <uses-permission
-18-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:11:5-12:38
+18-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:11:5-12:38
 19        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-19-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:11:22-78
+19-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:11:22-78
 20        android:maxSdkVersion="28" />
-20-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:12:9-35
+20-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:12:9-35
 21    <uses-permission
-21-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:13:5-14:38
+21-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:13:5-14:38
 22        android:name="android.permission.READ_EXTERNAL_STORAGE"
-22-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:13:22-77
+22-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:13:22-77
 23        android:maxSdkVersion="28" />
-23-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:14:9-35
+23-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:14:9-35
 24    <uses-permission android:name="android.permission.INTERNET" />
-24-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:15:5-66
-24-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:15:22-64
+24-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:15:5-66
+24-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:15:22-64
 25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-25-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:16:5-78
-25-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:16:22-76
+25-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:16:5-78
+25-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:16:22-76
 26
 27    <queries>
-27-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:22:5-26:15
+27-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:22:5-26:15
 28        <intent>
-28-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:23:9-25:18
+28-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:23:9-25:18
 29            <action android:name="androidx.camera.extensions.action.VENDOR_ACTION" />
-29-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:24:13-86
-29-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:24:21-83
+29-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:24:13-86
+29-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:24:21-83
 30        </intent>
 31    </queries>
 32
 33    <permission
-33-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+33-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
 34        android:name="com.mylocket.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-34-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+34-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
 35        android:protectionLevel="signature" />
-35-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+35-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 36
 37    <uses-permission android:name="com.mylocket.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-37-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-37-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+37-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+37-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 38
 39    <application
-39-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:17:5-38:19
+39-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:17:5-38:19
 40        android:allowBackup="true"
-40-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:18:9-35
+40-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:18:9-35
 41        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-41-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\7efe42f369faeedc29f7e1e6387e830b\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+41-->[androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 42        android:dataExtractionRules="@xml/data_extraction_rules"
-42-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:19:9-65
+42-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:19:9-65
 43        android:debuggable="true"
 44        android:extractNativeLibs="false"
 45        android:fullBackupContent="@xml/backup_rules"
-45-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:20:9-54
+45-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:20:9-54
 46        android:icon="@mipmap/ic_launcher"
-46-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:21:9-43
+46-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:21:9-43
 47        android:label="@string/app_name"
-47-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:22:9-41
+47-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:22:9-41
 48        android:roundIcon="@mipmap/ic_launcher_round"
-48-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:23:9-54
+48-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:23:9-54
 49        android:supportsRtl="true"
-49-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:24:9-35
+49-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:24:9-35
 50        android:testOnly="true"
 51        android:theme="@style/Theme.MyLocket" >
-51-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:25:9-46
+51-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:25:9-46
 52        <activity
-52-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:27:9-37:20
+52-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:27:9-37:20
 53            android:name="com.mylocket.MainActivity"
-53-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:28:13-41
+53-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:28:13-41
 54            android:exported="true"
-54-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:29:13-36
+54-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:29:13-36
 55            android:label="@string/app_name"
-55-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:30:13-45
+55-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:30:13-45
 56            android:theme="@style/Theme.MyLocket" >
-56-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:31:13-50
+56-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:31:13-50
 57            <intent-filter>
-57-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:32:13-36:29
+57-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:32:13-36:29
 58                <action android:name="android.intent.action.MAIN" />
-58-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:33:17-69
-58-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:33:25-66
+58-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:33:17-69
+58-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:33:25-66
 59
 60                <category android:name="android.intent.category.LAUNCHER" />
-60-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:35:17-77
-60-->D:\Locker App\MyLocket\app\src\main\AndroidManifest.xml:35:27-74
+60-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:35:17-77
+60-->D:\Locker App\MyLocket\my-locket\app\src\main\AndroidManifest.xml:35:27-74
 61            </intent-filter>
 62        </activity>
 63
 64        <uses-library
-64-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:29:9-31:40
+64-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:29:9-31:40
 65            android:name="androidx.camera.extensions.impl"
-65-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:30:13-59
+65-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:30:13-59
 66            android:required="false" />
-66-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\0cd00f62989b70abb98dc89f7ff5fbe5\transformed\camera-extensions-1.3.4\AndroidManifest.xml:31:13-37
+66-->[androidx.camera:camera-extensions:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\0fef45bad5944e89a4fa23582bf1579e\transformed\camera-extensions-1.3.4\AndroidManifest.xml:31:13-37
 67
 68        <service
-68-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:24:9-33:19
+68-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:24:9-33:19
 69            android:name="androidx.camera.core.impl.MetadataHolderService"
-69-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:25:13-75
+69-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:25:13-75
 70            android:enabled="false"
-70-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:26:13-36
+70-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:26:13-36
 71            android:exported="false" >
-71-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:27:13-37
+71-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:27:13-37
 72            <meta-data
-72-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:30:13-32:89
+72-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:30:13-32:89
 73                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
-73-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:31:17-103
+73-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:31:17-103
 74                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
-74-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\54f57ed778f86410c00b3884f3e2d816\transformed\camera-camera2-1.3.4\AndroidManifest.xml:32:17-86
+74-->[androidx.camera:camera-camera2:1.3.4] C:\Users\cauva\.gradle\caches\8.13\transforms\025ba7aee40496611d8203ac03a6b90b\transformed\camera-camera2-1.3.4\AndroidManifest.xml:32:17-86
 75        </service>
 76
 77        <activity
-77-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\936e01c418b18f0e5565af113fb0459c\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:23:9-25:39
+77-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\4efb430dc3997013a4d6c500467a6201\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:23:9-25:39
 78            android:name="androidx.activity.ComponentActivity"
-78-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\936e01c418b18f0e5565af113fb0459c\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:24:13-63
+78-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\4efb430dc3997013a4d6c500467a6201\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:24:13-63
 79            android:exported="true" />
-79-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\936e01c418b18f0e5565af113fb0459c\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:25:13-36
+79-->[androidx.compose.ui:ui-test-manifest:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\4efb430dc3997013a4d6c500467a6201\transformed\ui-test-manifest-1.7.2\AndroidManifest.xml:25:13-36
 80
 81        <provider
-81-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:9:9-17:20
+81-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:9:9-17:20
 82            android:name="androidx.startup.InitializationProvider"
-82-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:10:13-67
+82-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:10:13-67
 83            android:authorities="com.mylocket.androidx-startup"
-83-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:11:13-68
+83-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:11:13-68
 84            android:exported="false" >
-84-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:12:13-37
+84-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:12:13-37
 85            <meta-data
-85-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:14:13-16:52
+85-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:14:13-16:52
 86                android:name="io.github.jan.supabase.storage.SupabaseInitializer"
-86-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:15:17-82
+86-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:15:17-82
 87                android:value="androidx.startup" />
-87-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\a73956ca9de8412651bd63a125c450cd\transformed\storage-kt-debug\AndroidManifest.xml:16:17-49
+87-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\7e4338dc88ca412a4a9ea048584781bd\transformed\storage-kt-debug\AndroidManifest.xml:16:17-49
 88            <meta-data
-88-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\b3d65eed744d62dc6b7e13e026b761c9\transformed\gotrue-kt-debug\AndroidManifest.xml:14:13-16:52
+88-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\4550031c2c456f21ee6061cea6ddce78\transformed\gotrue-kt-debug\AndroidManifest.xml:14:13-16:52
 89                android:name="io.github.jan.supabase.gotrue.SupabaseInitializer"
-89-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\b3d65eed744d62dc6b7e13e026b761c9\transformed\gotrue-kt-debug\AndroidManifest.xml:15:17-81
+89-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\4550031c2c456f21ee6061cea6ddce78\transformed\gotrue-kt-debug\AndroidManifest.xml:15:17-81
 90                android:value="androidx.startup" />
-90-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\b3d65eed744d62dc6b7e13e026b761c9\transformed\gotrue-kt-debug\AndroidManifest.xml:16:17-49
+90-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.6.1] C:\Users\cauva\.gradle\caches\8.13\transforms\4550031c2c456f21ee6061cea6ddce78\transformed\gotrue-kt-debug\AndroidManifest.xml:16:17-49
 91            <meta-data
-91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.11.1\transforms\e66c4f93038914837400f0df3c8df8ad\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.13\transforms\8a1164071a9ac750213fe19de6842035\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
 92                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.11.1\transforms\e66c4f93038914837400f0df3c8df8ad\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.13\transforms\8a1164071a9ac750213fe19de6842035\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
 93                android:value="androidx.startup" />
-93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.11.1\transforms\e66c4f93038914837400f0df3c8df8ad\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cauva\.gradle\caches\8.13\transforms\8a1164071a9ac750213fe19de6842035\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
 94            <meta-data
-94-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\8331148889f7e804aec4cf00ca25c42b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:29:13-31:52
+94-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.13\transforms\9fecc7fbf0d2eb52f0198ffad8c65305\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:29:13-31:52
 95                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-95-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\8331148889f7e804aec4cf00ca25c42b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:30:17-78
+95-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.13\transforms\9fecc7fbf0d2eb52f0198ffad8c65305\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:30:17-78
 96                android:value="androidx.startup" />
-96-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.11.1\transforms\8331148889f7e804aec4cf00ca25c42b\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:31:17-49
+96-->[androidx.lifecycle:lifecycle-process:2.8.4] C:\Users\cauva\.gradle\caches\8.13\transforms\9fecc7fbf0d2eb52f0198ffad8c65305\transformed\lifecycle-process-2.8.4\AndroidManifest.xml:31:17-49
 97            <meta-data
-97-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\691b75a16c87c93ac672d2d9e5023c51\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:29:13-31:52
+97-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.13\transforms\fff7df14d3caf2f5d7ac6da7426cfbb4\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:29:13-31:52
 98                android:name="com.russhwolf.settings.SettingsInitializer"
-98-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\691b75a16c87c93ac672d2d9e5023c51\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:30:17-74
+98-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.13\transforms\fff7df14d3caf2f5d7ac6da7426cfbb4\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:30:17-74
 99                android:value="androidx.startup" />
-99-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\691b75a16c87c93ac672d2d9e5023c51\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:31:17-49
+99-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] C:\Users\cauva\.gradle\caches\8.13\transforms\fff7df14d3caf2f5d7ac6da7426cfbb4\transformed\multiplatform-settings-no-arg-debug\AndroidManifest.xml:31:17-49
 100            <meta-data
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
 101                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
 102                android:value="androidx.startup" />
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
 103        </provider>
 104
 105        <activity
-105-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\f2098674873188de4ef95090e4cb8963\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+105-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\7ef399d5d29126ab04907a9060372d79\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
 106            android:name="androidx.compose.ui.tooling.PreviewActivity"
-106-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\f2098674873188de4ef95090e4cb8963\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+106-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\7ef399d5d29126ab04907a9060372d79\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
 107            android:exported="true" />
-107-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.11.1\transforms\f2098674873188de4ef95090e4cb8963\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+107-->[androidx.compose.ui:ui-tooling-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\7ef399d5d29126ab04907a9060372d79\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
 108
 109        <receiver
-109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+109-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
 110            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
 111            android:directBootAware="false"
-111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
 112            android:enabled="true"
-112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
 113            android:exported="true"
-113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
 114            android:permission="android.permission.DUMP" >
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
 115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
 116                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
 117            </intent-filter>
 118            <intent-filter>
-118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
 119                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
 120            </intent-filter>
 121            <intent-filter>
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
 122                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
 123            </intent-filter>
 124            <intent-filter>
-124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
 125                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.11.1\transforms\562c31b6887c0322a7ee2c51361fe7fb\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\cauva\.gradle\caches\8.13\transforms\0271f0b068527541d509b405c9894ed7\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
 126            </intent-filter>
 127        </receiver>
 128    </application>

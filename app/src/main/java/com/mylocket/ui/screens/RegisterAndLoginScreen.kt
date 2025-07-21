@@ -1,8 +1,13 @@
 package com.mylocket.ui.screens
 
 import android.util.Patterns
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +19,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material3.Button
@@ -32,8 +39,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mylocket.R
 import com.mylocket.ui.theme.*
@@ -53,147 +62,235 @@ fun RegisterAndLoginScreen(
 
 
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.SpaceBetween,
-    ){
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier
-                .padding(start = 20.dp, top = 100.dp)
-                .size(50.dp)
-                .clip(CircleShape),
-            colors = IconButtonDefaults.iconButtonColors(
-                containerColor = MaterialTheme.colorScheme.onTertiary,
-                contentColor = MaterialTheme.colorScheme.secondary
-            )
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.back) ,
-                contentDescription = null,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-        }
-
-
-
+            .background(MaterialTheme.colorScheme.background)
+    ) {
         Column(
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.background),
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Center,
+                .fillMaxSize()
+                .padding(horizontal = 24.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "Email của bạn là gì?",
-                color = MaterialTheme.colorScheme.secondary,
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.SemiBold,
-                fontFamily = FontFamily.SansSerif,
-                modifier = Modifier
-                    .padding(start = 30.dp)
-
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            TextField(
-                value = email,
-                onValueChange = { input ->
-                    run {
-                        email = input
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 30.dp, end = 30.dp)
-                    .clip(shape = RoundedCornerShape(10.dp)),
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = MaterialTheme.colorScheme.onTertiary,
-                    focusedTextColor = MaterialTheme.colorScheme.secondary,
-                    cursorColor = MaterialTheme.colorScheme.tertiary, // Màu con trỏ
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    unfocusedTextColor = MaterialTheme.colorScheme.secondary
-                ),
-                placeholder = {
-                    Text(text = "Địa chỉ email")
-                },
-                singleLine = true,
-            )
-
-
-        }
-        Column(
-            modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Bottom
-        ){
-            Text(
-                text = "Bằng cách nhấn vào nút Tiếp tục, bạn đồng ý với chúng tôi",
-                color = Color(0xFF8D8A8B),
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Row {
-                Text(
-                    text = "Điều khoản dịch vụ",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Text(
-                    text = " và ",
-                    color = Color(0xFF8D8A8B),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Text(
-                    text = "Chính sách quyền riêng tư",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Button(
-                onClick = {
-                    if (registerOrLogin == "register"){
-                        navController.navigate("choosePassword/{$email}")
-                    }else if (registerOrLogin == "login"){
-                        navController.navigate("enterPassword/{$email}")
-                    }
-                },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = if (isEmailValid) Color.White else Color(0xFF757575),
-                    containerColor = if (isEmailValid) BlueOcean else Color(0xFFE0E0E0),
-                    disabledContainerColor = if (isEmailValid) BlueOcean else Color(0xFFE0E0E0)
-                ),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .padding(start = 10.dp, end = 10.dp),
-                enabled = isEmailValid,
-
-
+            // Top section with back button
+            AnimatedVisibility(
+                visible = true,
+                enter = fadeIn(animationSpec = tween(300))
             ) {
-                Text(
-                    text = "Tiếp tục",
-                    color = if (isEmailValid) Color.Black else Color(0xFF4E4E50),
-                    fontWeight = FontWeight.Bold
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                    contentDescription = null,
-                    tint = if (isEmailValid) Color.Black else Color(0xFF4E4E50)
+                IconButton(
+                    onClick = { navController.popBackStack() },
+                    modifier = Modifier
+                        .padding(top = 30.dp)
+                        .size(48.dp),
+                    colors = IconButtonDefaults.iconButtonColors(
+                        contentColor = Color.White,
+                        containerColor = Color.Transparent
                     )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.back),
+                        contentDescription = "Quay lại",
+                        tint = Color.White,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+
+
+
+            // Main content section - Clean design without card borders
+            AnimatedVisibility(
+                visible = true,
+                enter = slideInVertically(
+                    initialOffsetY = { it / 2 },
+                    animationSpec = tween(500, delayMillis = 200)
+                ) + fadeIn(animationSpec = tween(500, delayMillis = 200))
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 32.dp, horizontal = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    // Welcome text with clean design
+                    Text(
+                        text = if (registerOrLogin == "register") "Tạo tài khoản mới" else "Chào mừng trở lại",
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = BlueOcean,
+                        fontWeight = FontWeight.Medium,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Email của bạn là gì?",
+                        style = MaterialTheme.typography.headlineLarge,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Email input field with clean design
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        singleLine = true,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            containerColor = Color.Transparent,
+                            focusedBorderColor = MaterialTheme.colorScheme.primary,
+                            unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                            cursorColor = MaterialTheme.colorScheme.primary,
+                            focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                            unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                            focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            focusedLabelColor = MaterialTheme.colorScheme.primary,
+                            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        ),
+                        shape = RoundedCornerShape(16.dp),
+                        placeholder = {
+                            Text(
+                                text = "Nhập địa chỉ email của bạn",
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Email",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
+                    )
+                }
+            }
+            // Bottom section with terms and continue button
+            AnimatedVisibility(
+                visible = true,
+                enter = slideInVertically(
+                    initialOffsetY = { it },
+                    animationSpec = tween(500, delayMillis = 400)
+                ) + fadeIn(animationSpec = tween(500, delayMillis = 400))
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Bottom
+                ) {
+                    // Terms and privacy text with enhanced visibility
+                    Text(
+                        text = "Bằng cách nhấn vào nút Tiếp tục, bạn đồng ý với chúng tôi",
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        style = MaterialTheme.typography.bodySmall,
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.Normal
+                    )
+
+                    Spacer(modifier = Modifier.height(4.dp))
+
+                    Row(
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "Điều khoản dịch vụ",
+                            color = BlueOcean,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        Text(
+                            text = " và ",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                        Text(
+                            text = "Chính sách quyền riêng tư",
+                            color = BlueOcean,
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    // Continue button with clean design
+                    Button(
+                        onClick = {
+                            if (registerOrLogin == "register"){
+                                navController.navigate("choosePassword/{$email}")
+                            }else if (registerOrLogin == "login"){
+                                navController.navigate("enterPassword/{$email}")
+                            }
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = BlueOcean,
+                            contentColor = Color.White,
+                            disabledContainerColor = Color.Gray.copy(alpha = 0.3f),
+                            disabledContentColor = Color.White.copy(alpha = 0.5f)
+                        ),
+                        shape = RoundedCornerShape(16.dp),
+                        enabled = isEmailValid,
+                        elevation = ButtonDefaults.buttonElevation(
+                            defaultElevation = 0.dp,
+                            pressedElevation = 2.dp
+                        )
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "Tiếp tục",
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.bodyLarge,
+                                fontSize = 16.sp,
+                                color = Color.White
+                            )
+
+                            Spacer(modifier = Modifier.width(12.dp))
+
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                                tint = Color.White
+                            )
+                        }
+                    }
+                }
             }
         }
-
     }
 }
 
+// Preview cho RegisterAndLoginScreen
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun RegisterScreenPreview() {
+    MyLocketTheme {
+        val navController = androidx.navigation.compose.rememberNavController()
+        RegisterAndLoginScreen(
+            navController = navController,
+            registerOrLogin = "register"
+        )
+    }
+}
 
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LoginScreenPreview() {
+    MyLocketTheme {
+        val navController = androidx.navigation.compose.rememberNavController()
+        RegisterAndLoginScreen(
+            navController = navController,
+            registerOrLogin = "login"
+        )
+    }
+}

@@ -55,7 +55,7 @@ class FriendViewModel(private val uid: String) : ViewModel() {
                 // Update the current list with new friends
                 val currentFriends = _friends.value.toMutableList()
                 newFriends.forEach { newFriend ->
-                    val existingIndex = currentFriends.indexOfFirst { it.id == newFriend.id }
+                    val existingIndex = currentFriends.indexOfFirst { it.friendId == newFriend.friendId }
                     if (existingIndex >= 0) {
                         currentFriends[existingIndex] = newFriend
                     } else {
@@ -74,13 +74,13 @@ class FriendViewModel(private val uid: String) : ViewModel() {
 
             // Add current user as friend for the other user
             val reciprocalFriend = Friend(
-                status = FriendStatus.RECEIVED.toString(),
-                id = user.id,
+                friendId = user.id,
                 name = user.name,
                 email = user.email,
-                photo = user.photo
+                photo = user.photo,
+                status = FriendStatus.RECEIVED.toString()
             )
-            val result2 = databaseService.addFriend(friend.id, reciprocalFriend)
+            val result2 = databaseService.addFriend(friend.friendId, reciprocalFriend)
 
             if (result1.isSuccess && result2.isSuccess) {
                 Log.d("Add Friend", "Friend added successfully")

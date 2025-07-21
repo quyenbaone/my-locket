@@ -16,32 +16,39 @@ private val DarkColorScheme = darkColorScheme(
     primary = BlueOcean,
     secondary = BlueLight,
     tertiary = BlueDark,
-    background = Color(0xFF121212),
-    surface = Color(0xFF1E1E1E),
+    background = DarkBackground,        // Nền tối dễ nhìn
+    surface = DarkSurface,             // Surface tối
+    surfaceVariant = DarkSurfaceVariant, // Surface variant
     onPrimary = White,
     onSecondary = White,
     onTertiary = White,
-    onBackground = White,
-    onSurface = White,
+    onBackground = TextPrimaryDark,     // Chữ sáng trên nền tối
+    onSurface = TextPrimaryDark,        // Chữ sáng trên surface
+    onSurfaceVariant = TextSecondaryDark, // Chữ phụ
+    outline = BorderDark,               // Border tối
+    outlineVariant = BorderDark,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = BlueOcean,           // Màu chính - xanh nước biển
-    secondary = BlueLight,         // Màu phụ - xanh nhạt
-    tertiary = BlueDark,           // Màu thứ ba - xanh đậm
-    background = Background,       // Nền trắng
-    surface = SurfaceColor,        // Màu surface
-    onPrimary = TextOnPrimary,     // Chữ trắng trên nền xanh
-    onSecondary = TextPrimary,     // Chữ đen trên nền xanh nhạt
-    onTertiary = TextOnPrimary,    // Chữ trắng trên nền xanh đậm
-    onBackground = TextPrimary,    // Chữ đen trên nền trắng
-    onSurface = TextPrimary,       // Chữ đen trên surface
-    outline = TextSecondary,       // Đường viền xám
+    primary = BlueOcean,
+    secondary = BlueLight,
+    tertiary = BlueDark,
+    background = LightBackground,       // Nền sáng dễ nhìn
+    surface = LightSurface,            // Surface sáng
+    surfaceVariant = LightSurfaceVariant, // Surface variant
+    onPrimary = White,
+    onSecondary = TextPrimaryLight,
+    onTertiary = White,
+    onBackground = TextPrimaryLight,    // Chữ tối trên nền sáng
+    onSurface = TextPrimaryLight,       // Chữ tối trên surface
+    onSurfaceVariant = TextSecondaryLight, // Chữ phụ
+    outline = BorderLight,              // Border sáng
+    outlineVariant = BorderLight,
 )
 
 @Composable
 fun MyLocketTheme(
-    darkTheme: Boolean = false,  // Mặc định sử dụng light theme
+    darkTheme: Boolean = true,  // Mặc định sử dụng dark theme dễ nhìn hơn
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,  // Tắt dynamic color để sử dụng màu tùy chỉnh
     content: @Composable () -> Unit

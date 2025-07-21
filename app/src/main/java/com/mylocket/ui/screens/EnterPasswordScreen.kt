@@ -4,8 +4,13 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,6 +23,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material3.Button
@@ -48,8 +55,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mylocket.service.SupabaseAuthService
 import androidx.compose.runtime.rememberCoroutineScope
@@ -80,150 +89,217 @@ fun EnterPasswordScreen(
 
     val context = LocalContext.current
 
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 20.dp, bottom = 20.dp),
-        horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.SpaceBetween
     ) {
-        IconButton(
-            onClick = { navController.popBackStack() },
-            modifier = Modifier
-                .padding(start = 20.dp, top = 30.dp)
-                .clip(shape = CircleShape)
-                .size(50.dp),
-            colors = IconButtonDefaults.iconButtonColors(
-                contentColor = Color.White,
-                containerColor = MaterialTheme.colorScheme.onSurface
-            )
-        ) {
-            Icon(painter = painterResource(id = R.drawable.back), contentDescription = null)
-        }
+        // Background gradient effect could be added here
 
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .fillMaxSize()
+                .padding(horizontal = 24.dp, vertical = 20.dp),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "Điền mật khẩu của bạn",
-                style = MaterialTheme.typography.headlineLarge,
-                color = Color.White,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold
-            )
+            // Top section with back button
+            AnimatedVisibility(
+                visible = true,
+                enter = fadeIn(animationSpec = tween(300))
+            ) {
+                IconButton(
+                    onClick = { navController.popBackStack() },
+                    modifier = Modifier
+                        .padding(top = 30.dp)
+                        .size(48.dp),
+                    colors = IconButtonDefaults.iconButtonColors(
+                        contentColor = Color.White,
+                        containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+                    )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.back),
+                        contentDescription = "Quay lại",
+                        tint = Color.White
+                    )
+                }
+            }
 
-            OutlinedTextField(
-                value = password,
-                onValueChange = { input ->
-                    run {
-                        password = input
+            // Main content section - Clean design
+            AnimatedVisibility(
+                visible = true,
+                enter = slideInVertically(
+                    initialOffsetY = { it / 2 },
+                    animationSpec = tween(500, delayMillis = 200)
+                ) + fadeIn(animationSpec = tween(500, delayMillis = 200))
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 32.dp, horizontal = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    // Welcome back text - Clean design
+                    Text(
+                        text = "Chào mừng trở lại!",
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = BlueOcean,
+                        fontWeight = FontWeight.Medium,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Text(
+                        text = "Nhập mật khẩu để tiếp tục",
+                        style = MaterialTheme.typography.headlineLarge,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+
+                    Spacer(modifier = Modifier.height(48.dp))
+
+                    // Password input field - Clean design
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        singleLine = true,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(64.dp),
+                        colors = TextFieldDefaults.outlinedTextFieldColors(
+                            containerColor = Color.Transparent,
+                            focusedBorderColor = MaterialTheme.colorScheme.primary,
+                            unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                            cursorColor = MaterialTheme.colorScheme.primary,
+                            focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                            unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
+                            focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            focusedLabelColor = MaterialTheme.colorScheme.primary,
+                            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
+                        ),
+                        shape = RoundedCornerShape(16.dp),
+                        placeholder = {
+                            Text(
+                                text = "Nhập mật khẩu của bạn",
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Mật khẩu",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        },
+                        trailingIcon = {
+                            IconButton(
+                                onClick = { passwordVisible = !passwordVisible }
+                            ) {
+                                Icon(
+                                    painter = if (passwordVisible)
+                                        painterResource(id = R.drawable.ic_visibility_off)
+                                    else
+                                        painterResource(id = R.drawable.ic_visibility),
+                                    contentDescription = if (passwordVisible) "Ẩn mật khẩu" else "Hiện mật khẩu",
+                                    tint = Color.White.copy(alpha = 0.7f)
+                                )
+                            }
+                        },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                        // Forgot password button
+                        Button(
+                            onClick = {
+                                if (fixedEmail != null) {
+                                    scope.launch {
+                                        val result = authService.resetPassword(email)
+                                        if (result.isSuccess) {
+                                            Toast.makeText(
+                                                context,
+                                                "Đã gửi đường dẫn đổi mật khẩu vào email",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        } else {
+                                            Toast.makeText(context, "Không thể gửi đến email", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+                            ),
+                            elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp)
+                        ) {
+                            Text(
+                                text = "Quên mật khẩu?",
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Medium
+                            )
+                        }
                     }
-                },
-                singleLine = true,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
-                    .clip(shape = RoundedCornerShape(10.dp)),
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    cursorColor = Color.White,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
-                ),
-                placeholder = {
-                    Text(text = "Mật khẩu")
-                },
-                trailingIcon = {
+                }
 
-                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                        Icon(
-                            painter = if (passwordVisible) painterResource(id = R.drawable.ic_visibility_off) else painterResource(
-                                id = R.drawable.ic_visibility
-                            ), contentDescription = ""
-                        )
-                    }
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-            )
-
-            Button(
-                onClick = {
-
+            // Bottom section with continue button
+            AnimatedVisibility(
+                visible = true,
+                enter = slideInVertically(
+                    initialOffsetY = { it },
+                    animationSpec = tween(500, delayMillis = 400)
+                ) + fadeIn(animationSpec = tween(500, delayMillis = 400))
+            ) {
+                Button(
+                    onClick = {
                         if (fixedEmail != null) {
                             scope.launch {
-                                val result = authService.resetPassword(email)
-                                if (result.isSuccess) {
-                                    Toast.makeText(
-                                        context,
-                                        "Đã gửi đường dẫn đổi mật khẩu vào email",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                } else {
-                                    Toast.makeText(context, "Không thể gửi đến email", Toast.LENGTH_SHORT).show()
-                                }
+                                SignIn(authService, navController, password, fixedEmail, context)
                             }
                         }
-
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    contentColor = Color.White
-                )
-            ) {
-                Text(
-                    text = "Bạn đã quên mật khẩu",
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-        }
-
-        Button(
-            onClick = {
-                if (fixedEmail != null) {
-
-                    scope.launch {
-                        SignIn(authService, navController, password, fixedEmail, context)
-                    }
-
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, bottom = 10.dp)
-                .height(60.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = BlueOcean,
-                contentColor = Color.Black,
-                disabledContainerColor = MaterialTheme.colorScheme.onSurface,
-                disabledContentColor = Color(0xFF4E4E50)
-            ),
-            enabled = isPassword,
-
-            ) {
-            Row {
-                Text(
-                    text = "Tiếp tục",
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-
-                Spacer(modifier = Modifier.width(8.dp))
-
-                Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
-                    contentDescription = null,
-
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = BlueOcean,
+                        contentColor = Color.White,
+                        disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                        disabledContentColor = Color.White.copy(alpha = 0.5f)
+                    ),
+                    shape = RoundedCornerShape(16.dp),
+                    enabled = isPassword,
+                    elevation = ButtonDefaults.buttonElevation(
+                        defaultElevation = 0.dp,
+                        pressedElevation = 2.dp
                     )
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(
+                            text = "Đăng nhập",
+                            fontWeight = FontWeight.SemiBold,
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontSize = 16.sp
+                        )
+
+                        Spacer(modifier = Modifier.width(12.dp))
+
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowForward,
+                            contentDescription = null,
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
+                }
             }
         }
-
     }
 }
 
@@ -236,15 +312,34 @@ suspend fun SignIn(
 ) {
     val result = authService.signIn(email, password)
     if (result.isSuccess) {
+        Log.d("SignIn", "Sign in successful for: $email")
         navController.navigate("home")
     } else {
-        Log.e("SignIn", "Sign in failed: ${result.exceptionOrNull()}")
+        val exception = result.exceptionOrNull()
+        Log.e("SignIn", "Sign in failed for $email: $exception")
+
+        // Use the error message from SupabaseAuthService (already in Vietnamese)
+        val errorMessage = exception?.message ?: "Đăng nhập thất bại. Vui lòng thử lại."
+
         Toast.makeText(
             context,
-            "Authentication failed.",
-            Toast.LENGTH_SHORT,
+            errorMessage,
+            Toast.LENGTH_LONG,
         ).show()
     }
 }
 
-
+// Preview cho EnterPasswordScreen
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun EnterPasswordScreenPreview() {
+    com.mylocket.ui.theme.MyLocketTheme {
+        val navController = androidx.navigation.compose.rememberNavController()
+        val authService = com.mylocket.service.SupabaseAuthService()
+        EnterPasswordScreen(
+            authService = authService,
+            navController = navController,
+            email = "demo@example.com"
+        )
+    }
+}

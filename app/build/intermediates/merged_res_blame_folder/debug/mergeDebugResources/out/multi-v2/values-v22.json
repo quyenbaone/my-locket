@@ -1,19 +1,11 @@
 {
     "logs": [
         {
-            "outputFile": "com.mylocket.app-mergeDebugResources-61:/values-v22/values-v22.xml",
+            "outputFile": "com.mylocket.app-mergeDebugResources-64:/values-v22/values-v22.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\cauva\\.gradle\\caches\\8.11.1\\transforms\\31488d759c17c5bff595fbfddf1ca4e5\\transformed\\appcompat-1.1.0\\res\\values-v22\\values-v22.xml",
+                    "source": "C:\\Users\\cauva\\.gradle\\caches\\8.13\\transforms\\8738a9b2914d8cfe64b56fdb378e5eb2\\transformed\\appcompat-1.6.1\\res\\values-v22\\values-v22.xml",
                     "from": {
-                        "startLines": "2,3,4,9",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,130,217,553",
-                        "endLines": "2,3,8,13",
-                        "endColumns": "74,86,12,12",
-                        "endOffsets": "125,212,548,896"
-                    },
-                    "to": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",
                         "startOffsets": "55,130,217,487",

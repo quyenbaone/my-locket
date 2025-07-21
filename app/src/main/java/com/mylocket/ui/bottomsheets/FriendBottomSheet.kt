@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -40,12 +42,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.mylocket.service.SupabaseAuthService
 import com.mylocket.R
 import com.mylocket.viewmodel.FriendViewModel
 import com.mylocket.viewmodel.FriendViewModelFactory
 import com.mylocket.viewmodel.UserViewModel
+import com.mylocket.ui.theme.MyLocketTheme
 import com.mylocket.data.Friend
 import com.mylocket.data.FriendStatus
 import com.mylocket.data.User
@@ -399,17 +403,28 @@ fun CustomLine(
         }else{
             Button(
                 onClick = onAction,
+                modifier = Modifier.height(40.dp),
                 colors = ButtonDefaults.buttonColors(
-                    contentColor = MaterialTheme.colorScheme.primary,
-                    containerColor = MaterialTheme.colorScheme.tertiary
-                )
+                    containerColor = BlueOcean,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(12.dp),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp)
             ) {
                 Row (
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    Icon(painter = painterResource(id = R.drawable.ic_add), contentDescription = "")
-
-                    Text(text = "Chấp nhận")
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_add),
+                        contentDescription = "",
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Spacer(modifier = Modifier.width(4.dp))
+                    Text(
+                        text = "Chấp nhận",
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 14.sp
+                    )
                 }
             }
         }
@@ -456,19 +471,40 @@ fun CustomLine(
 
         Button(
             onClick = onAction,
+            modifier = Modifier.height(40.dp),
             colors = ButtonDefaults.buttonColors(
-                contentColor = MaterialTheme.colorScheme.primary,
-                containerColor = MaterialTheme.colorScheme.tertiary
-            )
+                containerColor = BlueOcean,
+                contentColor = Color.White
+            ),
+            shape = RoundedCornerShape(12.dp),
+            elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp)
         ) {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Icon(painter = painterResource(id = R.drawable.ic_add), contentDescription = "")
-
-                Text(text = "Thêm")
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_add),
+                    contentDescription = "",
+                    modifier = Modifier.size(16.dp)
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Text(
+                    text = "Thêm",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 14.sp
+                )
             }
         }
     }
 
+}
+
+// Preview cho FriendBottomSheet
+@Preview(showBackground = true)
+@Composable
+fun FriendBottomSheetPreview() {
+    MyLocketTheme {
+        val authService = SupabaseAuthService()
+        FriendBottomSheet(authService = authService)
+    }
 }

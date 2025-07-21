@@ -6,6 +6,7 @@ import com.mylocket.data.Friend
 import com.mylocket.data.Post
 import com.mylocket.data.User
 import io.github.jan.supabase.postgrest.from
+import io.github.jan.supabase.postgrest.query.Columns
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.datetime.Clock
@@ -53,14 +54,19 @@ class SupabaseDatabaseService {
 
     suspend fun getPostsForUser(userId: String): Result<List<Post>> {
         return try {
-            // For now, get all posts and filter client-side
-            val posts = client.from("posts").select().decodeList<Post>()
+            // Get posts where user is in to_who array OR user is the author
+            val posts = client.from("posts")
+                .select()
+                .decodeList<Post>()
+
             val filteredPosts = posts.filter { post ->
                 post.toWho.contains(userId) || post.userId == userId
             }
+
+            Log.d("SupabaseDB", "Retrieved ${filteredPosts.size} posts for user $userId")
             Result.success(filteredPosts)
         } catch (e: Exception) {
-            Log.e("SupabaseDB", "Error getting posts", e)
+            Log.e("SupabaseDB", "Error getting posts for user $userId", e)
             Result.failure(e)
         }
     }
@@ -75,40 +81,37 @@ class SupabaseDatabaseService {
         return try {
             val friendData = mapOf(
                 "user_id" to userId,
-                "friend_id" to friend.id,
+                "friend_id" to friend.friendId,
                 "friend_name" to friend.name,
                 "friend_email" to friend.email,
                 "friend_photo" to friend.photo,
                 "status" to friend.status
             )
+
+            Log.d("SupabaseDB", "Adding friend: $friendData")
             client.from("friends").insert(friendData)
+            Log.d("SupabaseDB", "Friend added successfully")
             Result.success(Unit)
         } catch (e: Exception) {
-            Log.e("SupabaseDB", "Error adding friend", e)
+            Log.e("SupabaseDB", "Error adding friend for user $userId", e)
             Result.failure(e)
         }
     }
 
     suspend fun getFriendsForUser(userId: String): Result<List<Friend>> {
         return try {
-            // Get all friends data and filter client-side for now
-            val friendsData = client.from("friends").select().decodeList<Map<String, Any>>()
-            val userFriends = friendsData.filter { data ->
-                data["user_id"] == userId
-            }
-            
-            val friends = userFriends.map { data ->
-                Friend(
-                    status = data["status"] as? String ?: "",
-                    id = data["friend_id"] as? String ?: "",
-                    name = data["friend_name"] as? String ?: "",
-                    email = data["friend_email"] as? String ?: "",
-                    photo = data["friend_photo"] as? String
-                )
-            }
-            Result.success(friends)
+            // Get all friends and filter client-side for now
+            val allFriends = client.from("friends")
+                .select()
+                .decodeList<Friend>()
+
+            // Filter friends for this user
+            val userFriends = allFriends.filter { it.userId == userId }
+
+            Log.d("SupabaseDB", "Retrieved ${userFriends.size} friends for user $userId")
+            Result.success(userFriends)
         } catch (e: Exception) {
-            Log.e("SupabaseDB", "Error getting friends", e)
+            Log.e("SupabaseDB", "Error getting friends for user $userId", e)
             Result.failure(e)
         }
     }

@@ -132,3 +132,13 @@ fun ChatScreen(
         }
     }
 }
+
+// Preview cho ChatScreen
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun ChatScreenPreview() {
+    com.mylocket.ui.theme.MyLocketTheme {
+        val navController = androidx.navigation.compose.rememberNavController()
+        ChatScreen(navController = navController)
+    }
+}

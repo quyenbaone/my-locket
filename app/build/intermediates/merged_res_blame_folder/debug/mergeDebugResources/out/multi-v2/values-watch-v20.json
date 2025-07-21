@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.mylocket.app-mergeDebugResources-61:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.mylocket.app-mergeDebugResources-64:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\cauva\\.gradle\\caches\\8.11.1\\transforms\\31488d759c17c5bff595fbfddf1ca4e5\\transformed\\appcompat-1.1.0\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\cauva\\.gradle\\caches\\8.13\\transforms\\8738a9b2914d8cfe64b56fdb378e5eb2\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

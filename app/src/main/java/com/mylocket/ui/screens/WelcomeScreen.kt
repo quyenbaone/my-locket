@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 // Firebase imports removed - using Supabase now
 import com.mylocket.R
@@ -147,6 +148,37 @@ fun ActionComponent(
             style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp
+        )
+    }
+}
+
+// Preview cho WelcomeScreen
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun WelcomeScreenPreview() {
+    MyLocketTheme {
+        WelcomeScreen(
+            onNavigateToRegister = { /* Preview only */ },
+            onNavigateToLogin = { /* Preview only */ }
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TitleComponentPreview() {
+    MyLocketTheme {
+        TitleComponent()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ActionComponentPreview() {
+    MyLocketTheme {
+        ActionComponent(
+            onNavigateToRegister = { /* Preview only */ },
+            onNavigateToLogin = { /* Preview only */ }
         )
     }
 }

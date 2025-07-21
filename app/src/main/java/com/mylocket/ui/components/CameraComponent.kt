@@ -1,6 +1,7 @@
 package com.mylocket.ui.components
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Environment
 import android.util.Log
@@ -12,7 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
+import androidx.camera.core.Preview as CameraPreview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.Recorder
 import androidx.camera.video.VideoCapture
@@ -20,6 +21,7 @@ import androidx.camera.view.CameraController
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -47,6 +49,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview as ComposePreview
+import com.mylocket.ui.theme.MyLocketTheme
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
@@ -62,7 +66,6 @@ import com.mylocket.ui.theme.BlueOcean
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.accompanist.permissions.rememberPermissionState
 import com.mylocket.R
-import com.mylocket.ui.theme.BlueOcean
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.OutputStream
@@ -70,6 +73,7 @@ import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
 
+@SuppressLint("RestrictedApi")
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun CameraComponent(
@@ -107,7 +111,7 @@ fun CameraComponent(
         mutableStateOf(CameraSelector.DEFAULT_FRONT_CAMERA)
     }
 
-    val preview = Preview.Builder().setMaxResolution(Size(screenWidth, screenWidth)).setCameraSelector(cameraSelector.value).build()
+    val preview = CameraPreview.Builder().setMaxResolution(Size(screenWidth, screenWidth)).setCameraSelector(cameraSelector.value).build()
 
     val imageCapture = remember {
         ImageCapture.Builder()
@@ -132,7 +136,7 @@ fun CameraComponent(
         }
     }, ContextCompat.getMainExecutor(context))
 
-    
+
     Column{
 
         Spacer(modifier = Modifier.height(150.dp))
@@ -258,4 +262,53 @@ fun CameraComponent(
 
     }
 
+}
+
+// Preview cho CameraComponent (Mock UI)
+@ComposePreview(showBackground = true)
+@Composable
+fun CameraComponentPreview() {
+    MyLocketTheme {
+        // Mock camera UI for preview (không có camera thật)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(300.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .border(2.dp, Color.Gray, RoundedCornerShape(16.dp)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "📷 Camera Preview",
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = Color.Gray
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                IconButton(
+                    onClick = { /* Preview only */ },
+                    modifier = Modifier.size(60.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_add),
+                        contentDescription = "Take Photo",
+                        modifier = Modifier.size(32.dp),
+                        tint = BlueOcean
+                    )
+                }
+            }
+        }
+    }
 }

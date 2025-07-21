@@ -3,6 +3,7 @@ package com.mylocket.service
 import android.util.Log
 import com.mylocket.config.SupabaseConfig
 import io.github.jan.supabase.storage.storage
+import kotlinx.coroutines.withTimeout
 import java.io.File
 
 class SupabaseStorageService {
@@ -12,17 +13,21 @@ class SupabaseStorageService {
         return try {
             val actualFileName = fileName ?: "images/${System.currentTimeMillis()}.jpg"
             val bucket = storage.from("images")
-            
-            // Upload the file
-            bucket.upload(actualFileName, file.readBytes())
-            
+
+            Log.d("SupabaseStorage", "Starting upload for file: ${file.name}, size: ${file.length()} bytes")
+
+            // Upload with timeout (60 seconds)
+            withTimeout(60_000) {
+                bucket.upload(actualFileName, file.readBytes())
+            }
+
             // Get the public URL
             val publicUrl = bucket.publicUrl(actualFileName)
-            
+
             Log.d("SupabaseStorage", "Image uploaded successfully: $publicUrl")
             Result.success(publicUrl)
         } catch (e: Exception) {
-            Log.e("SupabaseStorage", "Error uploading image", e)
+            Log.e("SupabaseStorage", "Error uploading image (${file.name})", e)
             Result.failure(e)
         }
     }
@@ -31,17 +36,21 @@ class SupabaseStorageService {
         return try {
             val actualFileName = fileName ?: "images/${System.currentTimeMillis()}.jpg"
             val bucket = storage.from("images")
-            
-            // Upload the byte array
-            bucket.upload(actualFileName, data)
-            
+
+            Log.d("SupabaseStorage", "Starting upload for byte array, size: ${data.size} bytes")
+
+            // Upload with timeout (60 seconds)
+            withTimeout(60_000) {
+                bucket.upload(actualFileName, data)
+            }
+
             // Get the public URL
             val publicUrl = bucket.publicUrl(actualFileName)
-            
+
             Log.d("SupabaseStorage", "Image uploaded successfully: $publicUrl")
             Result.success(publicUrl)
         } catch (e: Exception) {
-            Log.e("SupabaseStorage", "Error uploading image", e)
+            Log.e("SupabaseStorage", "Error uploading image from byte array", e)
             Result.failure(e)
         }
     }

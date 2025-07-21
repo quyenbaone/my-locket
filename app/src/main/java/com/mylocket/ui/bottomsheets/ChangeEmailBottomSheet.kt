@@ -2,15 +2,21 @@ package com.mylocket.ui.bottomsheets
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import com.mylocket.ui.theme.BlueOcean
+import com.mylocket.ui.theme.MyLocketTheme
 import com.mylocket.service.SupabaseAuthService
 import kotlinx.coroutines.launch
 
@@ -81,10 +87,50 @@ fun ChangeEmailBottomSheet(
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = newEmail.isNotEmpty() && newEmail != user!!.email
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = BlueOcean,
+                contentColor = Color.White,
+                disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                disabledContentColor = Color.White.copy(alpha = 0.5f)
+            ),
+            shape = RoundedCornerShape(16.dp),
+            enabled = newEmail.isNotEmpty() && newEmail != user!!.email,
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = if (newEmail.isNotEmpty() && newEmail != user.email) 4.dp else 0.dp
+            )
         ) {
-            Text("Request Email Change")
+            Text(
+                text = "Request Email Change",
+                fontWeight = FontWeight.SemiBold
+            )
         }
+    }
+}
+
+// Preview cho ChangeEmailBottomSheet
+@Preview(showBackground = true)
+@Composable
+fun ChangeEmailBottomSheetPreview() {
+    MyLocketTheme {
+        val authService = SupabaseAuthService()
+        ChangeEmailBottomSheet(
+            authService = authService,
+            email = "demo@example.com"
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ChangeEmailBottomSheetEmptyPreview() {
+    MyLocketTheme {
+        val authService = SupabaseAuthService()
+        ChangeEmailBottomSheet(
+            authService = authService,
+            email = ""
+        )
     }
 }

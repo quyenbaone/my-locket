@@ -1,11 +1,17 @@
 package com.mylocket.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -19,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.mylocket.R
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -39,6 +46,8 @@ import com.mylocket.ui.bottomsheets.FriendBottomSheet
 import com.mylocket.ui.bottomsheets.ProfileBottomSheet
 import com.mylocket.ui.components.CameraComponent
 import com.mylocket.ui.components.ImageComponent
+import com.mylocket.ui.components.PostsComponent
+import com.mylocket.ui.theme.BlueOcean
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,88 +98,132 @@ fun HomeScreen(
         ) {page ->
             when (page){
                 0 -> CameraComponent(navController = navController)
-                else -> ImageComponent()
-            }
-        }
-
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 75.dp)
-                .background(Color.Transparent),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(
-                onClick = {
-                    showBottomSheet = true
-                },
-                modifier = Modifier
-                    .size(50.dp)
-                    .clip(shape = CircleShape),
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    contentColor = Color.White
-                )
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.user),
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp)
-                )
-            }
-
-            Button(
-                onClick = {
-                    if (pagerState.currentPage == 0){
-                        showBottomSheetFriend = true
+                else -> {
+                    // Show posts for the authenticated user
+                    if (userAuthentication != null) {
+                        PostsComponent(userId = userAuthentication.id)
+                    } else {
+                        ImageComponent() // Fallback to static component
                     }
-                },
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    contentColor = Color.White
-                )
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.friend),
-                    contentDescription = null,
-                    modifier = Modifier.size(30.dp)
-                )
-
-                Spacer(modifier = Modifier.width(5.dp))
-
-                Text(
-                    text = if(pagerState.currentPage == 0) "1 Bạn bè" else "Tất cả bạn bè",
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.SemiBold
-                )
+                }
             }
+        }
 
-            IconButton(
-                onClick = { navController.navigate("chat") },
+
+        // Enhanced top navigation - chỉ hiển thị khi không phải camera
+        AnimatedVisibility(
+            visible = pagerState.currentPage != 0,
+            enter = fadeIn(animationSpec = tween(300))
+        ) {
+            Row(
                 modifier = Modifier
-                    .size(50.dp)
-                    .clip(shape = CircleShape),
-                colors = IconButtonDefaults.iconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.onSurface,
-                    contentColor = Color.White
-                )
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp, vertical = 60.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Profile button
+                IconButton(
+                    onClick = { showBottomSheet = true },
+                    modifier = Modifier
+                        .size(44.dp)
+                        .background(
+                            Color.Black.copy(alpha = 0.6f),
+                            CircleShape
+                        )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.user),
+                        contentDescription = "Profile",
+                        modifier = Modifier.size(22.dp),
+                        tint = Color.White
+                    )
+                }
+                // Friends button - improved styling
+                Button(
+                    onClick = { showBottomSheetFriend = true },
+                    colors = ButtonDefaults.buttonColors(
+                        Color.Black.copy(alpha = 0.6f),
+                        contentColor = Color.White
+
+                    ),
+                    shape = RoundedCornerShape(22.dp),
+                    modifier = Modifier
+                        .height(44.dp)
+                        .widthIn(min = 80.dp),
+                    elevation = ButtonDefaults.buttonElevation(
+                        defaultElevation = 4.dp,
+                        pressedElevation = 8.dp
+                    )
+                ) {
+                    Text(
+                        text = "Bạn bè",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                // Message button - NEW
+                IconButton(
+                    onClick = {
+                        navController.navigate("chat")
+                    },
+                    modifier = Modifier
+                        .size(44.dp)
+                        .background(
+                            Color.Black.copy(alpha = 0.6f),
+                            CircleShape
+                        )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.chat),
+                        contentDescription = "Messages",
+                        modifier = Modifier.size(22.dp),
+                        tint = Color.White
+                    )
+                }
+
+
+            }
+        }
+
+        // Enhanced Floating Action Button for camera/main action
+        AnimatedVisibility(
+            visible = pagerState.currentPage == 0,
+            enter = fadeIn(animationSpec = tween(300)) + slideInVertically(
+                animationSpec = tween(300),
+                initialOffsetY = { it }
+            ),
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 40.dp)
+        ) {
+            FloatingActionButton(
+                onClick = {
+                    // Add camera action or main functionality here
+                    navController.navigate("camera")
+                },
+                containerColor = BlueOcean,
+                contentColor = Color.White,
+                modifier = Modifier
+                    .size(68.dp),
+                shape = CircleShape
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.chat),
-                    contentDescription = null,
-                    modifier = Modifier.size(30.dp)
+                    painter = painterResource(id = R.drawable.ic_add),
+                    contentDescription = "Add Photo",
+                    modifier = Modifier.size(34.dp),
+                    tint = Color.White
                 )
             }
         }
+
         if (showBottomSheet) {
             ModalBottomSheet(
                 modifier = Modifier.fillMaxSize(),
                 sheetState = sheetState,
                 onDismissRequest = { showBottomSheet = false },
-                containerColor = MaterialTheme.colorScheme.onBackground
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = Color.White
 
             ) {
                 ProfileBottomSheet(
@@ -202,7 +255,8 @@ fun HomeScreen(
                 modifier = Modifier.fillMaxSize(),
                 sheetState = sheetFriendState,
                 onDismissRequest = { showBottomSheetFriend = false },
-                containerColor = MaterialTheme.colorScheme.onBackground
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = Color.White
 
             ) {
                 FriendBottomSheet(authService)
@@ -211,3 +265,30 @@ fun HomeScreen(
     }
 }
 
+// Preview cho HomeScreen
+@Preview(showBackground = true, showSystemUi = true, name = "Home Screen - Light")
+@Composable
+fun HomeScreenPreview() {
+    com.mylocket.ui.theme.MyLocketTheme {
+        val navController = androidx.navigation.compose.rememberNavController()
+        val authService = com.mylocket.service.SupabaseAuthService()
+        HomeScreen(
+            navController = navController,
+            authService = authService
+        )
+    }
+}
+
+// Preview cho HomeScreen với Dark Theme
+@Preview(showBackground = true, showSystemUi = true, name = "Home Screen - Dark")
+@Composable
+fun HomeScreenDarkPreview() {
+    com.mylocket.ui.theme.MyLocketTheme(darkTheme = true) {
+        val navController = androidx.navigation.compose.rememberNavController()
+        val authService = com.mylocket.service.SupabaseAuthService()
+        HomeScreen(
+            navController = navController,
+            authService = authService
+        )
+    }
+}

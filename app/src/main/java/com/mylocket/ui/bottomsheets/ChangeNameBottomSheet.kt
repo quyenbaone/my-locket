@@ -34,9 +34,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
 import com.mylocket.service.SupabaseAuthService
 import androidx.compose.runtime.rememberCoroutineScope
 import com.mylocket.ui.theme.BlueOcean
+import com.mylocket.ui.theme.MyLocketTheme
 import kotlinx.coroutines.launch
 
 
@@ -169,7 +172,7 @@ fun  ChangeNameBottomSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 30.dp, end = 30.dp, bottom = 100.dp)
-                .height(60.dp),
+                .height(56.dp),
             onClick = {
                 scope.launch {
                     val result = authService.updateProfile(lastname + " " + firstname)
@@ -183,17 +186,37 @@ fun  ChangeNameBottomSheet(
             },
             colors = ButtonDefaults.buttonColors(
                 containerColor = BlueOcean,
-                contentColor = Color.Black,
-                disabledContainerColor = MaterialTheme.colorScheme.onSurface,
-                disabledContentColor = Color(0xFF4E4E50)
+                contentColor = Color.White,
+                disabledContainerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
+                disabledContentColor = Color.White.copy(alpha = 0.5f)
             ),
-            enabled = enabled
+            shape = RoundedCornerShape(16.dp),
+            enabled = enabled,
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = if (enabled) 4.dp else 0.dp
+            )
         ) {
             Text(
                 text = "Lưu",
-                fontWeight = FontWeight.SemiBold
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 16.sp
             )
         }
     }
 }
 
+// Preview cho ChangeNameBottomSheet
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+fun ChangeNameBottomSheetPreview() {
+    MyLocketTheme {
+        val authService = SupabaseAuthService()
+        val sheetState = androidx.compose.material3.rememberModalBottomSheetState()
+        ChangeNameBottomSheet(
+            authService = authService,
+            sheetStateChangeName = sheetState,
+            onSheetClosed = { /* Preview only */ }
+        )
+    }
+}

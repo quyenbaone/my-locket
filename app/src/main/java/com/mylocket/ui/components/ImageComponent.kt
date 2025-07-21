@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mylocket.R
 import com.mylocket.ui.theme.BlueOcean
+import com.mylocket.ui.theme.MyLocketTheme
 
 @Composable
 fun ImageComponent(
@@ -146,8 +147,19 @@ fun ImageComponent(
     }
 }
 
-@Preview
+// Preview cho ImageComponent
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun PreviewImageComponent() {
-    ImageComponent()
+fun ImageComponentPreview() {
+    MyLocketTheme {
+        ImageComponent()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ImageComponentWithUriPreview() {
+    MyLocketTheme {
+        ImageComponent(uriImage = null) // Mock với null URI
+    }
 }

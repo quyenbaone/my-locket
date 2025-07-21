@@ -96,4 +96,7 @@ dependencies {
     //permission
     val permissions_version = "0.36.0"
     implementation ("com.google.accompanist:accompanist-permissions:$permissions_version")
+
+    //image loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }
