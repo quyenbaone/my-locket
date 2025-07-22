@@ -35,6 +35,7 @@ class FriendViewModel(private val uid: String) : ViewModel() {
     init {
         loadFriends()
         listenForFriendUpdates()
+        loadMockFriends() // Add mock friends for testing
     }
 
     private fun loadFriends() {
@@ -123,6 +124,45 @@ class FriendViewModel(private val uid: String) : ViewModel() {
                 Log.e("Delete Friend", "Error deleting friend")
             }
         }
+    }
+
+    // Load mock friends for testing
+    private fun loadMockFriends() {
+        val mockFriends = listOf(
+            Friend(
+                id = "friend_123",
+                friendId = "friend_123",
+                name = "Anna",
+                email = "anna@example.com",
+                photo = "",
+                status = FriendStatus.FRIENDS.toString()
+            ),
+            Friend(
+                id = "friend_456",
+                friendId = "friend_456",
+                name = "Minh",
+                email = "minh@example.com",
+                photo = "",
+                status = FriendStatus.FRIENDS.toString()
+            ),
+            Friend(
+                id = "friend_789",
+                friendId = "friend_789",
+                name = "Linh",
+                email = "linh@example.com",
+                photo = "",
+                status = FriendStatus.FRIENDS.toString()
+            )
+        )
+
+        // Add mock friends to current list
+        val currentFriends = _friends.value.toMutableList()
+        mockFriends.forEach { mockFriend ->
+            if (currentFriends.none { it.friendId == mockFriend.friendId }) {
+                currentFriends.add(mockFriend)
+            }
+        }
+        _friends.value = currentFriends
     }
 
     override fun onCleared() {

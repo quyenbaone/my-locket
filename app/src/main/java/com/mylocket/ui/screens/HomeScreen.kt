@@ -102,7 +102,10 @@ fun HomeScreen(
                 else -> {
                     // Show posts for the authenticated user
                     if (userAuthentication != null) {
-                        PostsComponent(userId = userAuthentication.id)
+                        PostsComponent(
+                            userId = userAuthentication.id,
+                            navController = navController
+                        )
                     } else {
                         ImageComponent() // Fallback to static component
                     }

@@ -99,24 +99,31 @@ fun ChatDetailScreen(
                     value = messageText,
                     onValueChange = { messageText = it },
                     onSendClick = {
-                        if (messageText.trim().isNotEmpty() && conversationId != null) {
+                        if (messageText.trim().isNotEmpty() && conversationId != null && !isLoading) {
                             scope.launch {
-                                isLoading = true
-                                val result = chatService.sendMessage(
-                                    conversationId = conversationId!!,
-                                    senderId = currentUserId,
-                                    receiverId = friendId,
-                                    content = messageText.trim()
-                                )
-                                
-                                if (result.isSuccess) {
-                                    messageText = ""
-                                    // Auto-scroll to bottom after sending
-                                    listState.animateScrollToItem(messages.size)
-                                } else {
-                                    errorMessage = "Failed to send message"
+                                try {
+                                    isLoading = true
+                                    val result = chatService.sendMessage(
+                                        conversationId = conversationId!!,
+                                        senderId = currentUserId,
+                                        receiverId = friendId,
+                                        content = messageText.trim()
+                                    )
+
+                                    if (result.isSuccess) {
+                                        messageText = ""
+                                        // Auto-scroll to bottom after sending
+                                        if (messages.isNotEmpty()) {
+                                            listState.animateScrollToItem(messages.size - 1)
+                                        }
+                                    } else {
+                                        errorMessage = "Failed to send message"
+                                    }
+                                } catch (e: Exception) {
+                                    errorMessage = "Error sending message: ${e.message}"
+                                } finally {
+                                    isLoading = false
                                 }
-                                isLoading = false
                             }
                         }
                     },

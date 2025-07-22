@@ -9,6 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,6 +22,7 @@ import com.mylocket.ui.screens.ChatScreen
 import com.mylocket.ui.screens.ChatDetailScreen
 import com.mylocket.ui.screens.ChooseNameScreen
 import com.mylocket.ui.screens.ChoosePasswordScreen
+import com.mylocket.ui.screens.CommentsScreen
 import com.mylocket.ui.screens.EnterPasswordScreen
 import com.mylocket.ui.screens.HomeScreen
 import com.mylocket.ui.screens.RegisterAndLoginScreen
@@ -72,9 +74,11 @@ private fun MyLocketNavigation(
     authViewModel: AuthViewModel,
     startDestination: String
 ) {
+    val context = LocalContext.current
+
     // Initialize services
     val databaseService = SupabaseDatabaseService()
-    val chatService = ChatService(databaseService)
+    val chatService = ChatService(databaseService, context)
     NavHost(navController = navController, startDestination = startDestination) {
         composable("welcome") {
             WelcomeScreen(
@@ -143,6 +147,15 @@ private fun MyLocketNavigation(
             val encodedPath = navBackStackEntry.arguments?.getString("imgPath")
             val imgPath = encodedPath?.let { URLDecoder.decode(it, StandardCharsets.UTF_8.toString()) }
             SendingScreen(navController= navController, imagePath = imgPath, authService = authService)
+        }
+        composable("comments/{postId}/{currentUserId}") { backStackEntry ->
+            val postId = backStackEntry.arguments?.getString("postId") ?: ""
+            val currentUserId = backStackEntry.arguments?.getString("currentUserId") ?: ""
+            CommentsScreen(
+                navController = navController,
+                postId = postId,
+                currentUserId = currentUserId
+            )
         }
     }
 }

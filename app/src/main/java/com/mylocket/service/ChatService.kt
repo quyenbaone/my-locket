@@ -1,5 +1,6 @@
 package com.mylocket.service
 
+import android.content.Context
 import android.util.Log
 import com.mylocket.data.Message
 import com.mylocket.data.ChatConversation
@@ -12,21 +13,64 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 
 class ChatService(
-    private val databaseService: SupabaseDatabaseService
+    private val databaseService: SupabaseDatabaseService,
+    private val context: Context
 ) {
+    private val localStorageService = LocalStorageService(context)
+
     private val _conversations = MutableStateFlow<List<ChatConversation>>(emptyList())
     val conversations: StateFlow<List<ChatConversation>> = _conversations.asStateFlow()
-    
+
     private val _messages = MutableStateFlow<Map<String, List<Message>>>(emptyMap())
     val messages: StateFlow<Map<String, List<Message>>> = _messages.asStateFlow()
-    
+
     private val _onlineUsers = MutableStateFlow<Set<String>>(emptySet())
     val onlineUsers: StateFlow<Set<String>> = _onlineUsers.asStateFlow()
+
+    init {
+        // Load saved data on initialization
+        loadSavedData()
+    }
+
+    // Load saved conversations and messages from local storage
+    private fun loadSavedData() {
+        try {
+            // Load conversations
+            val savedConversations = localStorageService.loadConversations()
+            if (savedConversations.isNotEmpty()) {
+                _conversations.value = savedConversations
+                Log.d("ChatService", "Loaded ${savedConversations.size} saved conversations")
+            }
+
+            // Load messages for each conversation
+            val messagesMap = mutableMapOf<String, List<Message>>()
+            savedConversations.forEach { conversation ->
+                val messages = localStorageService.loadMessages(conversation.id)
+                if (messages.isNotEmpty()) {
+                    messagesMap[conversation.id] = messages
+                }
+            }
+
+            if (messagesMap.isNotEmpty()) {
+                _messages.value = messagesMap
+                Log.d("ChatService", "Loaded messages for ${messagesMap.size} conversations")
+            }
+        } catch (e: Exception) {
+            Log.e("ChatService", "Error loading saved data", e)
+        }
+    }
 
     // Check if two users are friends before allowing chat
     suspend fun canChatWith(currentUserId: String, targetUserId: String): Result<Boolean> {
         return try {
             Log.d("ChatService", "Checking if $currentUserId can chat with $targetUserId")
+
+            // Allow chat with mock friends for testing
+            val mockFriendIds = listOf("friend_123", "friend_456", "friend_789")
+            if (targetUserId in mockFriendIds) {
+                Log.d("ChatService", "Allowing chat with mock friend: $targetUserId")
+                return Result.success(true)
+            }
 
             // Get friends list from database
             val friendsResult = databaseService.getFriendsForUser(currentUserId)
@@ -112,14 +156,30 @@ class ChatService(
                 messageType = messageType
             )
             
-            // Add message to local storage
+            // Add message to local memory storage
             val currentMessages = _messages.value[conversationId] ?: emptyList()
             _messages.value = _messages.value.toMutableMap().apply {
                 put(conversationId, currentMessages + message)
             }
-            
+
+            // Save message to local persistent storage
+            try {
+                localStorageService.addMessage(conversationId, message)
+                Log.d("ChatService", "Message saved to local storage: ${message.id}")
+            } catch (e: Exception) {
+                Log.e("ChatService", "Failed to save message to local storage", e)
+            }
+
             // Update conversation's last message
             updateConversationLastMessage(conversationId, message)
+
+            // Save updated conversation to local storage
+            try {
+                localStorageService.updateConversationLastMessage(conversationId, message)
+                Log.d("ChatService", "Conversation updated in local storage: $conversationId")
+            } catch (e: Exception) {
+                Log.e("ChatService", "Failed to update conversation in local storage", e)
+            }
 
             // Save to Supabase database
             try {
@@ -187,6 +247,10 @@ class ChatService(
             }
             _conversations.value = updatedConversations
 
+            // Save updated messages and conversations to local storage
+            localStorageService.saveMessages(conversationId, updatedMessages)
+            localStorageService.saveConversations(updatedConversations)
+
             Result.success(Unit)
         } catch (e: Exception) {
             Log.e("ChatService", "Error marking messages as read", e)
@@ -253,46 +317,171 @@ class ChatService(
 
     // Mock data for testing
     fun loadMockData(currentUserId: String) {
-        val mockFriendId = "friend_123"
-        val conversationId = "${listOf(currentUserId, mockFriendId).sorted().joinToString("_")}"
-        
-        val mockMessages = listOf(
-            Message(
-                id = "msg_1",
-                senderId = mockFriendId,
-                receiverId = currentUserId,
-                content = "Hey! How are you doing?",
-                timestamp = System.currentTimeMillis() - 3600000, // 1 hour ago
-                isRead = true
-            ),
-            Message(
-                id = "msg_2",
-                senderId = currentUserId,
-                receiverId = mockFriendId,
-                content = "I'm doing great! Thanks for asking 😊",
-                timestamp = System.currentTimeMillis() - 3000000, // 50 minutes ago
-                isRead = true
-            ),
-            Message(
-                id = "msg_3",
-                senderId = mockFriendId,
-                receiverId = currentUserId,
-                content = "That's awesome! Want to hang out later?",
-                timestamp = System.currentTimeMillis() - 1800000, // 30 minutes ago
-                isRead = false
-            )
+        // Only load mock data if no conversations exist yet
+        if (_conversations.value.isNotEmpty()) {
+            Log.d("ChatService", "Conversations already exist, skipping mock data load")
+            return
+        }
+
+        Log.d("ChatService", "Loading mock data for user: $currentUserId")
+
+        // Create multiple mock friends
+        val mockFriends = listOf(
+            "friend_123" to "Anna",
+            "friend_456" to "Minh",
+            "friend_789" to "Linh"
         )
-        
-        _messages.value = mapOf(conversationId to mockMessages)
-        
-        val mockConversation = ChatConversation(
-            id = conversationId,
-            participants = listOf(currentUserId, mockFriendId),
-            lastMessage = mockMessages.last(),
-            lastActivity = mockMessages.last().timestamp,
-            unreadCount = 1
-        )
-        
-        _conversations.value = listOf(mockConversation)
+
+        val allConversations = mutableListOf<ChatConversation>()
+        val allMessages = mutableMapOf<String, List<Message>>()
+
+        mockFriends.forEachIndexed { index, (friendId, friendName) ->
+            val conversationId = "${listOf(currentUserId, friendId).sorted().joinToString("_")}"
+
+            val mockMessages = when (index) {
+                0 -> { // Anna - Active conversation
+                    listOf(
+                        Message(
+                            id = "msg_${friendId}_1",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Chào bạn! Hôm nay thế nào? 😊",
+                            timestamp = System.currentTimeMillis() - 7200000, // 2 hours ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_2",
+                            senderId = currentUserId,
+                            receiverId = friendId,
+                            content = "Chào Anna! Mình ổn, cảm ơn bạn đã hỏi 💕",
+                            timestamp = System.currentTimeMillis() - 6900000, // 1h55m ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_3",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Tuyệt vời! Bạn có muốn đi uống cà phê không?",
+                            timestamp = System.currentTimeMillis() - 6600000, // 1h50m ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_4",
+                            senderId = currentUserId,
+                            receiverId = friendId,
+                            content = "Ý tưởng hay đấy! Mấy giờ bạn rảnh?",
+                            timestamp = System.currentTimeMillis() - 6300000, // 1h45m ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_5",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Chiều nay 3h được không? Mình biết một quán cà phê mới rất đẹp ✨",
+                            timestamp = System.currentTimeMillis() - 1800000, // 30 minutes ago
+                            isRead = false
+                        ),
+                        Message(
+                            id = "msg_${friendId}_6",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Bạn còn đó không? 🤔",
+                            timestamp = System.currentTimeMillis() - 600000, // 10 minutes ago
+                            isRead = false
+                        )
+                    )
+                }
+                1 -> { // Minh - Recent conversation
+                    listOf(
+                        Message(
+                            id = "msg_${friendId}_1",
+                            senderId = currentUserId,
+                            receiverId = friendId,
+                            content = "Minh ơi, bạn có thấy ảnh mình vừa đăng không?",
+                            timestamp = System.currentTimeMillis() - 3600000, // 1 hour ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_2",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Có! Ảnh đẹp quá! Chụp ở đâu vậy? 📸",
+                            timestamp = System.currentTimeMillis() - 3300000, // 55 minutes ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_3",
+                            senderId = currentUserId,
+                            receiverId = friendId,
+                            content = "Ở công viên gần nhà mình đó. Lần sau mình dẫn bạn đi nhé!",
+                            timestamp = System.currentTimeMillis() - 3000000, // 50 minutes ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_4",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Được luôn! Mình thích chụp ảnh lắm 🎨",
+                            timestamp = System.currentTimeMillis() - 2400000, // 40 minutes ago
+                            isRead = false
+                        )
+                    )
+                }
+                2 -> { // Linh - Older conversation
+                    listOf(
+                        Message(
+                            id = "msg_${friendId}_1",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Chúc mừng sinh nhật bạn! 🎉🎂",
+                            timestamp = System.currentTimeMillis() - 86400000, // 1 day ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_2",
+                            senderId = currentUserId,
+                            receiverId = friendId,
+                            content = "Cảm ơn Linh nhiều! Bạn nhớ mình quá 🥰",
+                            timestamp = System.currentTimeMillis() - 86100000, // 23h55m ago
+                            isRead = true
+                        ),
+                        Message(
+                            id = "msg_${friendId}_3",
+                            senderId = friendId,
+                            receiverId = currentUserId,
+                            content = "Tất nhiên rồi! Chúc bạn luôn vui vẻ và hạnh phúc nhé! 💝",
+                            timestamp = System.currentTimeMillis() - 85800000, // 23h50m ago
+                            isRead = true
+                        )
+                    )
+                }
+                else -> emptyList()
+            }
+
+            allMessages[conversationId] = mockMessages
+
+            if (mockMessages.isNotEmpty()) {
+                val unreadCount = mockMessages.count { !it.isRead && it.senderId != currentUserId }
+                val mockConversation = ChatConversation(
+                    id = conversationId,
+                    participants = listOf(currentUserId, friendId),
+                    lastMessage = mockMessages.last(),
+                    lastActivity = mockMessages.last().timestamp,
+                    unreadCount = unreadCount
+                )
+                allConversations.add(mockConversation)
+            }
+        }
+
+        _messages.value = allMessages
+        _conversations.value = allConversations.sortedByDescending { it.lastActivity }
+
+        // Save mock data to local storage for persistence
+        localStorageService.saveConversations(allConversations.sortedByDescending { it.lastActivity })
+        allMessages.forEach { (conversationId, messages) ->
+            localStorageService.saveMessages(conversationId, messages)
+        }
+
+        Log.d("ChatService", "Mock data saved to local storage")
     }
 }
