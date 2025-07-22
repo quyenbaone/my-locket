@@ -31,7 +31,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.LaunchedEffect
+import kotlinx.coroutines.launch
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,6 +56,7 @@ import com.mylocket.ui.theme.MyLocketTheme
 import com.mylocket.data.Friend
 import com.mylocket.data.FriendStatus
 import com.mylocket.data.User
+import com.mylocket.service.SupabaseDatabaseService
 import com.mylocket.ui.theme.BlueOcean
 import com.mylocket.ui.theme.Grey
 
@@ -62,8 +66,12 @@ import com.mylocket.ui.theme.Grey
 fun FriendBottomSheet(
     authService: SupabaseAuthService,
 ) {
+    val scope = rememberCoroutineScope()
+    val databaseService = SupabaseDatabaseService()
 
     var searchInput by remember { mutableStateOf("") }
+    var searchedUser by remember { mutableStateOf<User?>(null) }
+    var isSearching by remember { mutableStateOf(false) }
 
     val currentUser = authService.getCurrentUser()
 
@@ -80,6 +88,27 @@ fun FriendBottomSheet(
 
     val userViewModel: UserViewModel = viewModel()
     val userList by userViewModel.users.collectAsState(emptyList())
+
+    // Search for user by ID when searchInput changes
+    LaunchedEffect(searchInput) {
+        if (searchInput.isNotEmpty()) {
+            isSearching = true
+            // Check if input looks like an ID (8 characters, alphanumeric)
+            if (searchInput.length == 8 && searchInput.all { it.isLetterOrDigit() }) {
+                val result = databaseService.getUserByShortId(searchInput)
+                if (result.isSuccess) {
+                    searchedUser = result.getOrNull()
+                } else {
+                    searchedUser = null
+                }
+            } else {
+                searchedUser = null
+            }
+            isSearching = false
+        } else {
+            searchedUser = null
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -131,7 +160,7 @@ fun FriendBottomSheet(
                     Icon(painter = painterResource(id = R.drawable.ic_search), contentDescription ="" )
 
                     Text(
-                        text = "Thêm một người bạn mới",
+                        text = "Nhập ID hoặc email bạn bè",
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -175,13 +204,15 @@ fun FriendBottomSheet(
                 )
             }
 
-            userList.map { user->
-                if (user.id != currentUser.id && user.email.contains(searchInput) && friendList.none { friend -> friend.id == user.id }) {
+            // Show user found by ID first
+            searchedUser?.let { user ->
+                if (user.id != currentUser.id && friendList.none { friend -> friend.friendId == user.id }) {
                     CustomLine(
                         user = user,
                         onAction = {
                             val newFriend = Friend(
                                 id = user.id,
+                                friendId = user.id,
                                 name = user.name,
                                 email = user.email,
                                 photo = user.photo,
@@ -200,6 +231,38 @@ fun FriendBottomSheet(
                         }
                     )
                 }
+            }
+
+            // Show users found by email (only if no user found by ID)
+            if (searchedUser == null) {
+                userList.map { user->
+                    if (user.id != currentUser.id && user.email.contains(searchInput) && friendList.none { friend -> friend.friendId == user.id }) {
+                        CustomLine(
+                            user = user,
+                            onAction = {
+                                val newFriend = Friend(
+                                    id = user.id,
+                                    friendId = user.id,
+                                    name = user.name,
+                                    email = user.email,
+                                    photo = user.photo,
+                                    status = FriendStatus.SENT.toString()
+                                )
+                                val displayName = currentUser.userMetadata?.get("display_name") as? String ?: ""
+                                friendViewModel.addFriend(
+                                    newFriend,
+                                    user = User(
+                                        currentUser.id,
+                                        displayName,
+                                        currentUser.email ?: "",
+                                        currentUser.userMetadata?.get("avatar_url") as? String
+                                    )
+                                )
+                            }
+                        )
+                    }
+                }
+            }
 //                else{
 //                    Row(
 //                        modifier = Modifier
@@ -219,7 +282,6 @@ fun FriendBottomSheet(
 //                        )
 //                    }
 //                }
-            }
         }
 
         if (friendList.map { it.status== FriendStatus.RECEIVED.toString()}.isNotEmpty()){
@@ -283,7 +345,7 @@ fun FriendBottomSheet(
         friendList.map {item ->
             if (item.status == FriendStatus.SENT.toString()){
                 CustomLine(friend = item, onAction = {
-                    friendViewModel.deleteFriend(currentUser.id, item.id)
+                    friendViewModel.deleteFriend(currentUser.id, item.friendId)
                 })
             }
         }
@@ -330,7 +392,7 @@ fun FriendBottomSheet(
         friendList.map {item ->
             if (item.status == FriendStatus.FRIENDS.toString()){
                 CustomLine(friend = item, onAction = {
-                    friendViewModel.deleteFriend(currentUser.id, item.id)
+                    friendViewModel.deleteFriend(currentUser.id, item.friendId)
                 })
             }
         }

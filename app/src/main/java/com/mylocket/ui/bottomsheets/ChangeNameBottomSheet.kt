@@ -177,7 +177,7 @@ fun  ChangeNameBottomSheet(
                 scope.launch {
                     val result = authService.updateProfile(lastname + " " + firstname)
                     if (result.isSuccess) {
-                        sheetStateChangeName.hide()
+                        Toast.makeText(context, "Cập nhật tên thành công", Toast.LENGTH_SHORT).show()
                         onSheetClosed()
                     } else {
                         Toast.makeText(context, "Thêm tên người dùng thất bại", Toast.LENGTH_SHORT).show()

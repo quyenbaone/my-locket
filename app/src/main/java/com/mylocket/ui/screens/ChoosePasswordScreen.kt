@@ -59,7 +59,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mylocket.service.SupabaseAuthService
+import com.mylocket.viewmodel.AuthViewModel
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import com.mylocket.R
 import com.mylocket.ui.theme.BlueOcean
@@ -74,6 +76,7 @@ fun ChoosePasswordScreen(
     email: String?
 ){
     val scope = rememberCoroutineScope()
+    val authViewModel: AuthViewModel = viewModel()
 
     var password by remember {
         mutableStateOf("")
@@ -243,7 +246,7 @@ fun ChoosePasswordScreen(
                     onClick = {
                         if (emailFix != null) {
                             scope.launch {
-                                val result = authService.signUp(emailFix, password)
+                                val result = authViewModel.signUp(emailFix, password)
                                 if (result.isSuccess) {
                                     Log.d("ChoosePassword", "Sign up successful for: $emailFix")
                                     navController.navigate("chooseName")

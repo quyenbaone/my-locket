@@ -1,222 +1,206 @@
 [
     {
+        "merged": "com.mylocket.app-debug-66:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_close.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_close.xml"
+    },
+    {
         "merged": "com.mylocket.app-debug-66:/drawable_ic_switch_camera.xml.flat",
         "source": "com.mylocket.app-main-68:/drawable/ic_switch_camera.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_flash_on.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_flash_on.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-xxhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xxhdpi/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xhdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xhdpi\\ic_launcher_round.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_empty_friend.png.flat",
+        "source": "com.mylocket.app-main-68:/drawable/empty_friend.png"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_friend_add.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_friend_add.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_bling.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_bling.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_visibility_off.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_visibility_off.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_img.jpg.flat",
+        "source": "com.mylocket.app-main-68:/drawable/img.jpg"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-mdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-mdpi\\ic_launcher.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_grid.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\grid.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_delele.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_delele.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_delele.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_delele.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_friend_add.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_friend_add.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xxhdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xxhdpi\\ic_launcher.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_next.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_next.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_gallery.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_gallery.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_camera.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/camera.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_option.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\option.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_visibility.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_visibility.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/mipmap-xxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xxhdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_email.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_email.xml"
     },
     {
         "merged": "com.mylocket.app-debug-66:/drawable_ic_gallery.xml.flat",
         "source": "com.mylocket.app-main-68:/drawable/ic_gallery.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-hdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-hdpi\\ic_launcher.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_flash_on.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_flash_on.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_bling.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_bling.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_grid.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/grid.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_visibility_off.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_visibility_off.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.mylocket.app-debug-66:/drawable_down.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/down.xml"
     },
     {
         "merged": "com.mylocket.app-debug-66:/drawable_ic_friends.xml.flat",
         "source": "com.mylocket.app-main-68:/drawable/ic_friends.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_img.jpg.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\img.jpg"
+        "merged": "com.mylocket.app-debug-66:/xml_data_extraction_rules.xml.flat",
+        "source": "com.mylocket.app-main-68:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_down.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\down.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\xml\\backup_rules.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_switch_camera.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_switch_camera.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_check.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_check.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_friend.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/friend.xml"
     },
     {
         "merged": "com.mylocket.app-debug-66:/drawable_ic_notification.xml.flat",
         "source": "com.mylocket.app-main-68:/drawable/ic_notification.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xxxhdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xxxhdpi\\ic_launcher_round.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_download.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_download.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_flash_off.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_flash_off.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_back.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/back.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-hdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-hdpi\\ic_launcher_round.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_xcirclered.png.flat",
+        "source": "com.mylocket.app-main-68:/drawable/xcirclered.png"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_back.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\back.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_flash_off.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_flash_off.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_capture.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\capture.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_capture.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/capture.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_chat.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/chat.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xhdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xhdpi\\ic_launcher.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_add.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_add.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_user.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/user.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_logo.png.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\logo.png"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_send.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_send.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_setting.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_setting.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-mdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-mdpi/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_log_out.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_log_out.xml"
+        "merged": "com.mylocket.app-debug-66:/xml_backup_rules.xml.flat",
+        "source": "com.mylocket.app-main-68:/xml/backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_welcome.png.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\welcome.png"
+        "merged": "com.mylocket.app-debug-66:/mipmap-xhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xhdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_empty_friend.png.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\empty_friend.png"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_log_out.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_log_out.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_setting.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_setting.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_chat.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\chat.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_email.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_email.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_welcome.png.flat",
+        "source": "com.mylocket.app-main-68:/drawable/welcome.png"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_camera.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\camera.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_logo.png.flat",
+        "source": "com.mylocket.app-main-68:/drawable/logo.png"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_download.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_download.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-xhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xhdpi/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_friends.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_friends.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_search.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_search.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_friend.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\friend.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-mdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-mdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_search.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_search.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_option.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/option.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_visibility.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_visibility.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-xxxhdpi_ic_launcher.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xxxhdpi/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\xml\\data_extraction_rules.xml"
+        "merged": "com.mylocket.app-debug-66:/mipmap-xxxhdpi_ic_launcher_round.xml.flat",
+        "source": "com.mylocket.app-main-68:/mipmap-xxxhdpi/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_user.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\user.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xxhdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xxhdpi\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_send.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_send.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_next.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_next.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_notification.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_notification.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-mdpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-mdpi\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_xcirclered.png.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\xcirclered.png"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\mipmap-xxxhdpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\mipmap-xxxhdpi\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_add.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_add.xml"
-    },
-    {
-        "merged": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-debug-66:\\drawable_ic_close.xml.flat",
-        "source": "C:\\Users\\cauva\\.gradle\\daemon\\8.13\\com.mylocket.app-main-68:\\drawable\\ic_close.xml"
+        "merged": "com.mylocket.app-debug-66:/drawable_ic_check.xml.flat",
+        "source": "com.mylocket.app-main-68:/drawable/ic_check.xml"
     }
 ]

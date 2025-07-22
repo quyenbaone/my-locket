@@ -40,6 +40,18 @@ CREATE TABLE public.friends (
     UNIQUE(user_id, friend_id)
 );
 
+-- Create comments table
+CREATE TABLE public.comments (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    post_id UUID REFERENCES public.posts(id) ON DELETE CASCADE NOT NULL,
+    user_id UUID REFERENCES public.users(id) ON DELETE CASCADE NOT NULL,
+    user_name TEXT NOT NULL,
+    content TEXT NOT NULL,
+    time TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Create storage bucket for images
 INSERT INTO storage.buckets (id, name, public) VALUES ('images', 'images', true);
 
@@ -47,6 +59,7 @@ INSERT INTO storage.buckets (id, name, public) VALUES ('images', 'images', true)
 ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.friends ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.comments ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies for users table
 CREATE POLICY "Users can view all users" ON public.users
@@ -85,6 +98,25 @@ CREATE POLICY "Users can update their own friend relationships" ON public.friend
     FOR UPDATE USING (auth.uid() = user_id);
 
 CREATE POLICY "Users can delete their own friend relationships" ON public.friends
+    FOR DELETE USING (auth.uid() = user_id);
+
+-- RLS Policies for comments table
+CREATE POLICY "Users can view comments on posts they can see" ON public.comments
+    FOR SELECT USING (
+        EXISTS (
+            SELECT 1 FROM public.posts
+            WHERE posts.id = comments.post_id
+            AND (auth.uid()::text = ANY(posts.to_who) OR auth.uid() = posts.user_id)
+        )
+    );
+
+CREATE POLICY "Users can insert their own comments" ON public.comments
+    FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their own comments" ON public.comments
+    FOR UPDATE USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can delete their own comments" ON public.comments
     FOR DELETE USING (auth.uid() = user_id);
 
 -- Storage policies for images bucket

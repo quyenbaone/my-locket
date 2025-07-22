@@ -359,7 +359,7 @@ fun SendingScreen(
                     ){
                         IconButton(
                             onClick = {
-                                chooseSending = friendList.map { item -> item.id } + currentUser.id
+                                chooseSending = friendList.map { item -> item.friendId } + currentUser.id
                                 status = "all"
                             },
                             colors = IconButtonDefaults.iconButtonColors(

@@ -1,7 +1,16 @@
 package com.mylocket.navigation
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,6 +23,8 @@ import com.mylocket.ui.screens.HomeScreen
 import com.mylocket.ui.screens.RegisterAndLoginScreen
 import com.mylocket.ui.screens.SendingScreen
 import com.mylocket.ui.screens.WelcomeScreen
+import com.mylocket.viewmodel.AuthState
+import com.mylocket.viewmodel.AuthViewModel
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
@@ -21,13 +32,43 @@ import java.nio.charset.StandardCharsets
 @Composable
 fun MyLocketNavHost() {
     val navController = rememberNavController()
-
+    val authViewModel: AuthViewModel = viewModel()
     val authService = SupabaseAuthService()
 
-    val currentUser = authService.getCurrentUser()
+    val authState by authViewModel.authState.collectAsState()
+    val currentUser by authViewModel.currentUser.collectAsState()
 
-    val startDestination = "welcome" // Always start with welcome for now
+    // Show loading screen while checking auth state
+    when (authState) {
+        is AuthState.Loading -> {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+            return
+        }
+        is AuthState.Authenticated -> {
+            // User is logged in, start with home
+            val startDestination = "home"
+            MyLocketNavigation(navController, authService, authViewModel, startDestination)
+        }
+        is AuthState.NotAuthenticated -> {
+            // User is not logged in, start with welcome
+            val startDestination = "welcome"
+            MyLocketNavigation(navController, authService, authViewModel, startDestination)
+        }
+    }
+}
 
+@Composable
+private fun MyLocketNavigation(
+    navController: NavHostController,
+    authService: SupabaseAuthService,
+    authViewModel: AuthViewModel,
+    startDestination: String
+) {
     NavHost(navController = navController, startDestination = startDestination) {
         composable("welcome") {
             WelcomeScreen(
@@ -69,7 +110,13 @@ fun MyLocketNavHost() {
             val email = navBackStackEntry.arguments?.getString("email")
             EnterPasswordScreen(navController = navController, authService = authService, email = email)
         }
-        composable("home") { HomeScreen(navController = navController, authService = authService) }
+        composable("home") {
+            HomeScreen(
+                navController = navController,
+                authService = authService,
+                authViewModel = authViewModel
+            )
+        }
         composable("chat") { ChatScreen(navController = navController) }
         composable("sending/{imgPath}"){navBackStackEntry ->
             val encodedPath = navBackStackEntry.arguments?.getString("imgPath")

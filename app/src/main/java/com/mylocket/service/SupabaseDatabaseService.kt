@@ -2,6 +2,7 @@ package com.mylocket.service
 
 import android.util.Log
 import com.mylocket.config.SupabaseConfig
+import com.mylocket.data.Comment
 import com.mylocket.data.Friend
 import com.mylocket.data.Post
 import com.mylocket.data.User
@@ -35,6 +36,37 @@ class SupabaseDatabaseService {
         }
     }
 
+    suspend fun getUserById(userId: String): Result<User?> {
+        return try {
+            val users = client.from("users")
+                .select()
+                .decodeList<User>()
+
+            val user = users.find { it.id == userId }
+            Log.d("SupabaseDB", "Retrieved user: ${user?.name} for ID: $userId")
+            Result.success(user)
+        } catch (e: Exception) {
+            Log.e("SupabaseDB", "Error getting user by ID $userId", e)
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getUserByShortId(shortId: String): Result<User?> {
+        return try {
+            val users = client.from("users")
+                .select()
+                .decodeList<User>()
+
+            // Find user whose ID starts with the short ID (case insensitive)
+            val user = users.find { it.id.take(8).uppercase() == shortId.uppercase() }
+            Log.d("SupabaseDB", "Retrieved user by short ID: ${user?.name} for shortID: $shortId")
+            Result.success(user)
+        } catch (e: Exception) {
+            Log.e("SupabaseDB", "Error getting user by short ID $shortId", e)
+            Result.failure(e)
+        }
+    }
+
     // Simplified real-time - return empty flow for now
     fun observeUsers(): Flow<List<User>> {
         return flowOf(emptyList())
@@ -54,16 +86,36 @@ class SupabaseDatabaseService {
 
     suspend fun getPostsForUser(userId: String): Result<List<Post>> {
         return try {
-            // Get posts where user is in to_who array OR user is the author
-            val posts = client.from("posts")
+            // Get all posts first
+            val allPosts = client.from("posts")
                 .select()
                 .decodeList<Post>()
 
-            val filteredPosts = posts.filter { post ->
-                post.toWho.contains(userId) || post.userId == userId
+            // Get user's friends
+            val friendsResult = getFriendsForUser(userId)
+            val friends = if (friendsResult.isSuccess) {
+                friendsResult.getOrNull() ?: emptyList()
+            } else {
+                emptyList()
             }
 
-            Log.d("SupabaseDB", "Retrieved ${filteredPosts.size} posts for user $userId")
+            // Get list of friend IDs who are confirmed friends
+            val friendIds = friends
+                .filter { it.status == "FRIENDS" }
+                .map { it.friendId }
+
+            // Filter posts to show:
+            // 1. Posts sent to this user (in toWho array)
+            // 2. Posts created by this user
+            // 3. Posts created by friends that include this user in toWho
+            val filteredPosts = allPosts.filter { post ->
+                post.toWho.contains(userId) || // Posts sent to user
+                post.userId == userId || // User's own posts
+                (friendIds.contains(post.userId) && post.toWho.contains(userId)) // Friend's posts sent to user
+            }
+
+            Log.d("SupabaseDB", "Retrieved ${filteredPosts.size} posts for user $userId from ${allPosts.size} total posts")
+            Log.d("SupabaseDB", "User has ${friends.size} friends, ${friendIds.size} confirmed friends")
             Result.success(filteredPosts)
         } catch (e: Exception) {
             Log.e("SupabaseDB", "Error getting posts for user $userId", e)
@@ -143,5 +195,49 @@ class SupabaseDatabaseService {
     // Simplified real-time - return empty flow for now
     fun observeFriendsForUser(userId: String): Flow<List<Friend>> {
         return flowOf(emptyList())
+    }
+
+    // Comment operations
+    suspend fun addComment(comment: Comment): Result<Unit> {
+        return try {
+            val commentWithTimestamp = comment.copy(
+                time = Clock.System.now(),
+                createdAt = Clock.System.now(),
+                updatedAt = Clock.System.now()
+            )
+            client.from("comments").insert(commentWithTimestamp)
+            Log.d("SupabaseDB", "Comment added successfully for post ${comment.postId}")
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Log.e("SupabaseDB", "Error adding comment", e)
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getCommentsForPost(postId: String): Result<List<Comment>> {
+        return try {
+            val comments = client.from("comments")
+                .select()
+                .decodeList<Comment>()
+                .filter { it.postId == postId }
+                .sortedBy { it.time }
+
+            Log.d("SupabaseDB", "Retrieved ${comments.size} comments for post $postId")
+            Result.success(comments)
+        } catch (e: Exception) {
+            Log.e("SupabaseDB", "Error getting comments for post $postId", e)
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteComment(commentId: String): Result<Unit> {
+        return try {
+            // For now, simplified implementation
+            Log.d("SupabaseDB", "Comment deletion requested: $commentId")
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Log.e("SupabaseDB", "Error deleting comment", e)
+            Result.failure(e)
+        }
     }
 }

@@ -11,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
@@ -40,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.mylocket.service.SupabaseAuthService
+import com.mylocket.viewmodel.AuthViewModel
 import com.mylocket.viewmodel.UserViewModel
 import com.mylocket.data.User
 import com.mylocket.ui.bottomsheets.FriendBottomSheet
@@ -54,7 +54,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeScreen(
     navController: NavController,
-    authService: SupabaseAuthService
+    authService: SupabaseAuthService,
+    authViewModel: AuthViewModel
 ) {
     //Pager
     val pagerState =  rememberPagerState (initialPage = 0, pageCount = {10})
@@ -186,36 +187,7 @@ fun HomeScreen(
             }
         }
 
-        // Enhanced Floating Action Button for camera/main action
-        AnimatedVisibility(
-            visible = pagerState.currentPage == 0,
-            enter = fadeIn(animationSpec = tween(300)) + slideInVertically(
-                animationSpec = tween(300),
-                initialOffsetY = { it }
-            ),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 40.dp)
-        ) {
-            FloatingActionButton(
-                onClick = {
-                    // Add camera action or main functionality here
-                    navController.navigate("camera")
-                },
-                containerColor = BlueOcean,
-                contentColor = Color.White,
-                modifier = Modifier
-                    .size(68.dp),
-                shape = CircleShape
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_add),
-                    contentDescription = "Add Photo",
-                    modifier = Modifier.size(34.dp),
-                    tint = Color.White
-                )
-            }
-        }
+
 
         if (showBottomSheet) {
             ModalBottomSheet(
@@ -229,23 +201,17 @@ fun HomeScreen(
                 ProfileBottomSheet(
                     authService,
                     navController,
+                    authViewModel = authViewModel,
                     logOut = {
-//                        scope.launch { sheetState.hide() }.invokeOnCompletion {
-//                            if (!sheetState.isVisible) {
-//                                showBottomSheet = false
-//
-//                            }
-//                        }
-
                         scope.launch {
-                            // Điều hướng đến màn hình welcome
-                            navController.navigate("welcome") {
-                                popUpTo("home") { inclusive = true }
+                            // Thực hiện logout thông qua AuthViewModel
+                            val result = authViewModel.signOut()
+                            if (result.isSuccess) {
+                                // Đóng bottom sheet
+                                showBottomSheet = false
+                                // Navigation sẽ được xử lý tự động bởi AuthViewModel
                             }
-
                         }
-
-
                     }
                 )
             }
@@ -272,9 +238,11 @@ fun HomeScreenPreview() {
     com.mylocket.ui.theme.MyLocketTheme {
         val navController = androidx.navigation.compose.rememberNavController()
         val authService = com.mylocket.service.SupabaseAuthService()
+        val authViewModel = com.mylocket.viewmodel.AuthViewModel()
         HomeScreen(
             navController = navController,
-            authService = authService
+            authService = authService,
+            authViewModel = authViewModel
         )
     }
 }
@@ -286,9 +254,11 @@ fun HomeScreenDarkPreview() {
     com.mylocket.ui.theme.MyLocketTheme(darkTheme = true) {
         val navController = androidx.navigation.compose.rememberNavController()
         val authService = com.mylocket.service.SupabaseAuthService()
+        val authViewModel = com.mylocket.viewmodel.AuthViewModel()
         HomeScreen(
             navController = navController,
-            authService = authService
+            authService = authService,
+            authViewModel = authViewModel
         )
     }
 }

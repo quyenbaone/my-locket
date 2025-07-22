@@ -61,7 +61,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mylocket.service.SupabaseAuthService
+import com.mylocket.viewmodel.AuthViewModel
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import com.mylocket.R
 import com.mylocket.ui.theme.BlueOcean
@@ -74,6 +76,7 @@ fun EnterPasswordScreen(
     email: String?,
 ) {
     val scope = rememberCoroutineScope()
+    val authViewModel: AuthViewModel = viewModel()
 
     var password by remember {
         mutableStateOf("")
@@ -258,7 +261,7 @@ fun EnterPasswordScreen(
                     onClick = {
                         if (fixedEmail != null) {
                             scope.launch {
-                                SignIn(authService, navController, password, fixedEmail, context)
+                                SignIn(authViewModel, navController, password, fixedEmail, context)
                             }
                         }
                     },
@@ -304,16 +307,17 @@ fun EnterPasswordScreen(
 }
 
 suspend fun SignIn(
-    authService: SupabaseAuthService,
+    authViewModel: AuthViewModel,
     navController: NavController,
     password: String,
     email: String,
     context: Context
 ) {
-    val result = authService.signIn(email, password)
+    val result = authViewModel.signIn(email, password)
     if (result.isSuccess) {
         Log.d("SignIn", "Sign in successful for: $email")
-        navController.navigate("home")
+        // Navigation will be handled automatically by AuthViewModel state changes
+        // No need to manually navigate to home
     } else {
         val exception = result.exceptionOrNull()
         Log.e("SignIn", "Sign in failed for $email: $exception")
