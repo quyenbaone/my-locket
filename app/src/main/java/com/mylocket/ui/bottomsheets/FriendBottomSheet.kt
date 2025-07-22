@@ -147,9 +147,9 @@ fun FriendBottomSheet(
                 containerColor = MaterialTheme.colorScheme.onSecondary,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                focusedTextColor = Color.White,
-                unfocusedTextColor = Color.White,
-                cursorColor = Color.White,
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black,
+                cursorColor = Color.Black,
                 unfocusedPlaceholderColor = Color.Gray,
                 focusedPlaceholderColor = Color.Gray
             ),

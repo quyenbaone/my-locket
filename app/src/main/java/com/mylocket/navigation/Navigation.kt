@@ -15,7 +15,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mylocket.service.SupabaseAuthService
+import com.mylocket.service.SupabaseDatabaseService
+import com.mylocket.service.ChatService
 import com.mylocket.ui.screens.ChatScreen
+import com.mylocket.ui.screens.ChatDetailScreen
 import com.mylocket.ui.screens.ChooseNameScreen
 import com.mylocket.ui.screens.ChoosePasswordScreen
 import com.mylocket.ui.screens.EnterPasswordScreen
@@ -69,6 +72,9 @@ private fun MyLocketNavigation(
     authViewModel: AuthViewModel,
     startDestination: String
 ) {
+    // Initialize services
+    val databaseService = SupabaseDatabaseService()
+    val chatService = ChatService(databaseService)
     NavHost(navController = navController, startDestination = startDestination) {
         composable("welcome") {
             WelcomeScreen(
@@ -107,7 +113,7 @@ private fun MyLocketNavigation(
             )
         }
         composable("enterPassword/{email}") { navBackStackEntry ->
-            val email = navBackStackEntry.arguments?.getString("email")
+            val email = navBackStackEntry.arguments?.getString("email") ?: ""
             EnterPasswordScreen(navController = navController, authService = authService, email = email)
         }
         composable("home") {
@@ -117,7 +123,22 @@ private fun MyLocketNavigation(
                 authViewModel = authViewModel
             )
         }
-        composable("chat") { ChatScreen(navController = navController) }
+        composable("chat") {
+            ChatScreen(
+                navController = navController,
+                chatService = chatService
+            )
+        }
+        composable("chat_detail/{friendId}/{friendName}") { backStackEntry ->
+            val friendId = backStackEntry.arguments?.getString("friendId") ?: ""
+            val friendName = backStackEntry.arguments?.getString("friendName") ?: ""
+            ChatDetailScreen(
+                navController = navController,
+                friendId = friendId,
+                friendName = friendName,
+                chatService = chatService
+            )
+        }
         composable("sending/{imgPath}"){navBackStackEntry ->
             val encodedPath = navBackStackEntry.arguments?.getString("imgPath")
             val imgPath = encodedPath?.let { URLDecoder.decode(it, StandardCharsets.UTF_8.toString()) }

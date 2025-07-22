@@ -252,7 +252,9 @@ fun SendingScreen(
                         unfocusedContainerColor = Color(0x80000000),
                         focusedContainerColor = Color(0x80000000),
                         focusedTextColor = Color.White,
-                        unfocusedPlaceholderColor = Color.White
+                        unfocusedTextColor = Color.White, // ✅ Thêm màu chữ trắng khi không focus
+                        unfocusedPlaceholderColor = Color.White,
+                        focusedPlaceholderColor = Color.White.copy(alpha = 0.7f) // ✅ Thêm màu placeholder khi focus
                     ),
                     placeholder = {
                         Text(text = "Thêm một tin nhắn")
@@ -288,7 +290,7 @@ fun SendingScreen(
 
                 IconButton(
                     onClick = {
-                        if (!isUploading) {
+                        if (!isUploading && imagePath != null) {
                             val file = File(imagePath)  // Tạo đối tượng File từ đường dẫn
                             if (file.exists()) {
                                 isUploading = true

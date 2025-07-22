@@ -54,6 +54,11 @@ import com.mylocket.data.User
 import com.mylocket.ui.theme.BlueOcean
 import com.mylocket.ui.theme.MyLocketTheme
 import kotlinx.coroutines.launch
+import androidx.compose.foundation.clickable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.IconButton
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -76,6 +81,16 @@ fun ProfileBottomSheet(
     // State for bottom sheets
     var showChangeNameSheet by remember { mutableStateOf(false) }
     var showChangeEmailSheet by remember { mutableStateOf(false) }
+
+    // State for inline editing
+    var isEditingName by remember { mutableStateOf(false) }
+    var editingName by remember { mutableStateOf("") }
+    var isEditingEmail by remember { mutableStateOf(false) }
+    var editingEmail by remember { mutableStateOf("") }
+
+    // State for updated user info
+    var updatedName by remember { mutableStateOf<String?>(null) }
+    var updatedEmail by remember { mutableStateOf<String?>(null) }
 
     // Load user data from database
     LaunchedEffect(currentUser?.id) {
@@ -106,8 +121,8 @@ fun ProfileBottomSheet(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 24.dp, vertical = 16.dp),
+            .background(Color.Black)
+            .padding(horizontal = 24.dp, vertical = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Drag Handle
@@ -116,7 +131,7 @@ fun ProfileBottomSheet(
                 .width(40.dp)
                 .height(4.dp)
                 .background(
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                    color = Color.White.copy(alpha = 0.4f),
                     shape = RoundedCornerShape(2.dp)
                 )
         )
@@ -126,9 +141,9 @@ fun ProfileBottomSheet(
         // Profile Avatar Section
         Box(
             modifier = Modifier
-                .size(100.dp)
+                .size(120.dp)
                 .background(
-                    BlueOcean.copy(alpha = 0.1f),
+                    Color.Gray.copy(alpha = 0.2f),
                     shape = CircleShape
                 )
                 .border(
@@ -141,80 +156,267 @@ fun ProfileBottomSheet(
             Icon(
                 painter = painterResource(id = R.drawable.user),
                 contentDescription = "Profile Avatar",
-                modifier = Modifier.size(50.dp),
-                tint = BlueOcean
+                modifier = Modifier.size(60.dp),
+                tint = Color.White.copy(alpha = 0.8f)
             )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // User Name - prioritize updated name, then database name, then metadata
+        val displayName = updatedName?.takeIf { it.isNotBlank() }
+            ?: userFromDatabase?.name?.takeIf { it.isNotBlank() }
+            ?: (currentUser.userMetadata?.get("display_name") as? String)
+            ?: "User"
+
+        // Initialize editing name when starting to edit
+        LaunchedEffect(isEditingName) {
+            if (isEditingName && editingName.isEmpty()) {
+                editingName = displayName
+            }
+        }
+
+        if (isEditingName) {
+            // Inline editing mode
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                OutlinedTextField(
+                    value = editingName,
+                    onValueChange = { editingName = it },
+                    modifier = Modifier.weight(1f),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        focusedBorderColor = BlueOcean,
+                        unfocusedBorderColor = Color.White.copy(alpha = 0.5f),
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent
+                    ),
+                    textStyle = MaterialTheme.typography.headlineSmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                )
+
+                // Save button
+                IconButton(
+                    onClick = {
+                        if (editingName.isNotBlank()) {
+                            // Update UI immediately for better UX
+                            updatedName = editingName.trim()
+                            isEditingName = false
+
+                            // Save to database
+                            scope.launch {
+                                val result = databaseService.updateUserName(currentUser.id, editingName.trim())
+                                if (result.isSuccess) {
+                                    Toast.makeText(context, "Cập nhật tên thành công", Toast.LENGTH_SHORT).show()
+
+                                    // Refresh user data from database to get the latest info
+                                    val userResult = databaseService.getUserById(currentUser.id)
+                                    if (userResult.isSuccess) {
+                                        userFromDatabase = userResult.getOrNull()
+                                        // Clear the temporary updated name since we now have fresh data
+                                        updatedName = null
+                                    }
+                                } else {
+                                    // If database save fails, revert UI change
+                                    updatedName = null
+                                    Toast.makeText(context, "Lỗi lưu tên vào database", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        }
+                    },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_check),
+                        contentDescription = "Lưu",
+                        tint = BlueOcean,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+
+                // Cancel button
+                IconButton(
+                    onClick = {
+                        isEditingName = false
+                        editingName = ""
+                    },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_close),
+                        contentDescription = "Hủy",
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+        } else {
+            // Display mode with click to edit
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { isEditingName = true },
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = displayName,
+                    color = Color.White,
+                    style = MaterialTheme.typography.headlineSmall.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                    textAlign = TextAlign.Center
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_setting),
+                    contentDescription = "Sửa tên",
+                    tint = Color.White.copy(alpha = 0.6f),
+                    modifier = Modifier.size(20.dp)
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // User Name - prioritize database name over metadata
-        val displayName = userFromDatabase?.name?.takeIf { it.isNotBlank() }
-            ?: (currentUser.userMetadata?.get("display_name") as? String)
-            ?: "User"
-        Text(
-            text = displayName,
-            color = MaterialTheme.colorScheme.onBackground,
-            style = MaterialTheme.typography.headlineSmall.copy(
-                fontWeight = FontWeight.Bold
-            ),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
+        // User Email - with inline editing
+        val displayEmail = updatedEmail?.takeIf { it.isNotBlank() }
+            ?: currentUser.email
+            ?: "No email"
 
-        Spacer(modifier = Modifier.height(4.dp))
+        // Initialize editing email when starting to edit
+        LaunchedEffect(isEditingEmail) {
+            if (isEditingEmail && editingEmail.isEmpty()) {
+                editingEmail = displayEmail
+            }
+        }
 
-        // User Email
-        Text(
-            text = currentUser.email ?: "No email",
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
-            style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
-        )
+        if (isEditingEmail) {
+            // Inline editing mode for email
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                OutlinedTextField(
+                    value = editingEmail,
+                    onValueChange = { editingEmail = it },
+                    modifier = Modifier.weight(1f),
+                    singleLine = true,
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedTextColor = Color.White,
+                        unfocusedTextColor = Color.White,
+                        focusedBorderColor = BlueOcean,
+                        unfocusedBorderColor = Color.White.copy(alpha = 0.5f),
+                        focusedContainerColor = Color.Transparent,
+                        unfocusedContainerColor = Color.Transparent
+                    ),
+                    textStyle = MaterialTheme.typography.bodyMedium.copy(
+                        textAlign = TextAlign.Center
+                    )
+                )
 
-        Spacer(modifier = Modifier.height(24.dp))
+                // Save button
+                IconButton(
+                    onClick = {
+                        if (editingEmail.isNotBlank() && android.util.Patterns.EMAIL_ADDRESS.matcher(editingEmail).matches()) {
+                            // Update UI immediately for better UX
+                            updatedEmail = editingEmail.trim()
+                            isEditingEmail = false
+
+                            // Save to database
+                            scope.launch {
+                                val result = databaseService.updateUserEmail(currentUser.id, editingEmail.trim())
+                                if (result.isSuccess) {
+                                    Toast.makeText(context, "Cập nhật email thành công", Toast.LENGTH_SHORT).show()
+
+                                    // Refresh user data from database to get the latest info
+                                    val userResult = databaseService.getUserById(currentUser.id)
+                                    if (userResult.isSuccess) {
+                                        userFromDatabase = userResult.getOrNull()
+                                        // Clear the temporary updated email since we now have fresh data
+                                        updatedEmail = null
+                                    }
+                                } else {
+                                    // If database save fails, revert UI change
+                                    updatedEmail = null
+                                    Toast.makeText(context, "Lỗi lưu email vào database", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            Toast.makeText(context, "Email không hợp lệ", Toast.LENGTH_SHORT).show()
+                        }
+                    },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_check),
+                        contentDescription = "Lưu",
+                        tint = BlueOcean,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+
+                // Cancel button
+                IconButton(
+                    onClick = {
+                        isEditingEmail = false
+                        editingEmail = ""
+                    },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_close),
+                        contentDescription = "Hủy",
+                        tint = MaterialTheme.colorScheme.error,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+        } else {
+            // Display mode with click to edit
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { isEditingEmail = true },
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = displayEmail,
+                    color = Color.White.copy(alpha = 0.7f),
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_setting),
+                    contentDescription = "Sửa email",
+                    tint = Color.White.copy(alpha = 0.4f),
+                    modifier = Modifier.size(16.dp)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
 
         // Action Buttons
         Column(
             modifier = Modifier
                 .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Edit Profile Button - Primary Action
-            Button(
-                onClick = {
-                    showChangeNameSheet = true
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = BlueOcean,
-                    contentColor = Color.White
-                ),
-                shape = RoundedCornerShape(16.dp),
-                elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_setting),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp),
-                        tint = Color.White
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Sửa thông tin",
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            fontWeight = FontWeight.Medium
-                        )
-                    )
-                }
-            }
 
             // Share Button - Secondary Action
             Button(
@@ -233,14 +435,14 @@ fun ProfileBottomSheet(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp),
+                    .height(60.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                    contentColor = MaterialTheme.colorScheme.onSurface
+                    containerColor = Color.Gray.copy(alpha = 0.2f),
+                    contentColor = Color.White
                 ),
-                shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)),
-                elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp)
+                shape = RoundedCornerShape(20.dp),
+                border = BorderStroke(1.dp, Color.White.copy(alpha = 0.2f)),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp)
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -250,7 +452,7 @@ fun ProfileBottomSheet(
                         painter = painterResource(id = R.drawable.ic_send),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
+                        tint = Color.White
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
@@ -261,66 +463,9 @@ fun ProfileBottomSheet(
                     )
                 }
             }
-        }
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        // Settings Section
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 0.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
-            ),
-            shape = RoundedCornerShape(20.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                // Settings Header
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_setting),
-                        contentDescription = "",
-                        modifier = Modifier.size(24.dp),
-                        tint = BlueOcean
-                    )
-
-                    Spacer(modifier = Modifier.width(12.dp))
-
-                    Text(
-                        text = "Cài đặt",
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                    )
-                }
-
-                // Settings buttons
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-            // Change Email Button
-            SettingButton(
-                title = "Thay đổi địa chỉ Email",
-                icon = R.drawable.ic_email,
-                onClick = {
-                    showChangeEmailSheet = true
-                }
-            )
 
             // Sign Out Button
-            SettingButton(
-                title = "Đăng xuất",
-                icon = R.drawable.ic_log_out,
+            Button(
                 onClick = {
                     scope.launch {
                         val result = authViewModel.signOut()
@@ -328,28 +473,40 @@ fun ProfileBottomSheet(
                             logOut()
                         }
                     }
-                }
-            )
-
-            // Delete Account Button
-            SettingButton(
-                title = "Xóa tài khoản",
-                icon = R.drawable.ic_delele,
-                onClick = {
-                    scope.launch {
-                        val result = authService.deleteAccount()
-                        if (result.isSuccess) {
-                            navController.navigate("welcome")
-                        }
-                    }
                 },
-                isDestructive = true
-            )
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Red.copy(alpha = 0.2f),
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(20.dp),
+                border = BorderStroke(1.dp, Color.Red.copy(alpha = 0.3f)),
+                elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_log_out),
+                        contentDescription = null,
+                        modifier = Modifier.size(20.dp),
+                        tint = Color.White
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Đăng xuất",
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontWeight = FontWeight.Medium
+                        )
+                    )
                 }
             }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(24.dp))
     }
 
     // Change Name Bottom Sheet

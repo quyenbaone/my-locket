@@ -2,10 +2,12 @@ package com.mylocket.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +26,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -38,9 +41,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
@@ -48,6 +54,7 @@ import com.mylocket.data.Post
 import com.mylocket.data.User
 import com.mylocket.service.SupabaseDatabaseService
 import com.mylocket.viewmodel.PostViewModel
+import com.mylocket.ui.theme.BlueOcean
 import com.mylocket.viewmodel.PostViewModelFactory
 import com.mylocket.viewmodel.CommentViewModel
 import com.mylocket.viewmodel.CommentViewModelFactory
@@ -60,6 +67,10 @@ import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import com.mylocket.data.Comment
 import com.mylocket.service.SupabaseAuthService
+import android.util.Log
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.foundation.layout.heightIn
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -189,9 +200,8 @@ private fun PostItem(
     // State for sender name
     var senderName by remember { mutableStateOf<String?>(null) }
 
-    // State for comment bottom sheet
-    var showCommentSheet by remember { mutableStateOf(false) }
-    val commentSheetState = rememberModalBottomSheetState()
+    // State for showing comments inline
+    var showComments by remember { mutableStateOf(false) }
 
     // Load sender name
     LaunchedEffect(post.userId) {
@@ -300,37 +310,256 @@ private fun PostItem(
             Spacer(modifier = Modifier.height(16.dp))
 
             IconButton(
-                onClick = { showCommentSheet = true },
+                onClick = {
+                    Log.d("PostItem", "Comment button clicked for post: ${post.id}")
+                    showComments = !showComments
+                },
                 modifier = Modifier
                     .background(
                         Color.Black.copy(alpha = 0.6f),
                         shape = CircleShape
                     )
-                    .size(48.dp)
+                    .size(64.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_send),
-                    contentDescription = "Bình luận",
+                    painter = painterResource(id = if (showComments) R.drawable.ic_close else R.drawable.ic_send),
+                    contentDescription = if (showComments) "Ẩn bình luận" else "Hiện bình luận",
                     tint = Color.White,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(32.dp)
                 )
             }
         }
 
+        // Inline Comments Section
+        if (showComments) {
+            InlineCommentsSection(
+                postId = post.id,
+                currentUserId = currentUserId
+            )
+        }
+
         Spacer(modifier = Modifier.height(100.dp))
     }
+}
 
-    // Comment Bottom Sheet
-    if (showCommentSheet) {
-        ModalBottomSheet(
-            onDismissRequest = { showCommentSheet = false },
-            sheetState = commentSheetState,
-            containerColor = MaterialTheme.colorScheme.surface
+@Composable
+private fun InlineCommentsSection(
+    postId: String,
+    currentUserId: String
+) {
+    val scope = rememberCoroutineScope()
+    val databaseService = SupabaseDatabaseService()
+    val authService = SupabaseAuthService()
+
+    // Comment ViewModel
+    val commentViewModel: CommentViewModel = viewModel(
+        factory = CommentViewModelFactory(postId)
+    )
+
+    val comments by commentViewModel.comments.collectAsState()
+    val isLoading by commentViewModel.isLoading.collectAsState()
+
+    // Comment input state
+    var commentText by remember { mutableStateOf(TextFieldValue("")) }
+
+    // Get current user info
+    val currentUser = authService.getCurrentUser()
+    var currentUserName by remember { mutableStateOf("") }
+
+    LaunchedEffect(currentUser) {
+        if (currentUser != null) {
+            scope.launch {
+                val result = databaseService.getUserById(currentUser.id)
+                if (result.isSuccess) {
+                    val user = result.getOrNull()
+                    currentUserName = user?.name?.takeIf { it.isNotBlank() } ?: "Bạn"
+                } else {
+                    currentUserName = "Bạn"
+                }
+            }
+        }
+    }
+
+    // Debug logs
+    LaunchedEffect(comments) {
+        Log.d("InlineComments", "Comments state changed: ${comments.size} comments")
+    }
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.Black.copy(alpha = 0.8f)
+        ),
+        shape = RoundedCornerShape(16.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
-            CommentBottomSheet(
-                postId = post.id,
-                currentUserId = currentUserId,
-                onDismiss = { showCommentSheet = false }
+            // Comments list
+            if (isLoading) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(color = Color.White)
+                }
+            } else if (comments.isEmpty()) {
+                Text(
+                    text = "Chưa có bình luận nào",
+                    color = Color.White.copy(alpha = 0.7f),
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = 250.dp), // Increase max height slightly
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    contentPadding = PaddingValues(vertical = 4.dp) // Add content padding
+                ) {
+                    items(
+                        items = comments,
+                        key = { comment -> comment.id } // Add key for better performance
+                    ) { comment ->
+                        InlineCommentItem(comment = comment, currentUserId = currentUserId)
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+//
+            // Comment input
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+                verticalAlignment = Alignment.Bottom
+            ) {
+                // Simple TextField với màu chữ trắng
+                TextField(
+                    value = commentText.text,
+                    onValueChange = { newText ->
+                        commentText = TextFieldValue(newText)
+                    },
+                    placeholder = {
+                        Text(
+                            text = "Viết bình luận...",
+                            color = Color.White.copy(alpha = 0.8f)
+                        )
+                    },
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = 56.dp),
+                    maxLines = 3,
+                    colors = TextFieldDefaults.colors(
+                        focusedTextColor = BlueOcean, // ✅ Màu xanh BlueOcean khi nhập
+                        unfocusedTextColor = Color.White, // Màu trắng khi không nhập
+                        focusedContainerColor = Color.Gray.copy(alpha = 0.3f),
+                        unfocusedContainerColor = Color.Gray.copy(alpha = 0.2f),
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        cursorColor = BlueOcean // ✅ Cursor cũng màu xanh
+                    ),
+                    shape = RoundedCornerShape(16.dp)
+                )
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                IconButton(
+                    onClick = {
+                        if (commentText.text.isNotBlank()) {
+                            commentViewModel.addComment(
+                                content = commentText.text,
+                                userId = currentUserId,
+                                userName = currentUserName
+                            )
+                            commentText = TextFieldValue("")
+                        }
+                    },
+                    enabled = commentText.text.isNotBlank(),
+                    modifier = Modifier
+                        .size(56.dp)
+                        .background(
+                            if (commentText.text.isNotBlank()) BlueOcean else Color.Gray.copy(alpha = 0.3f),
+                            shape = CircleShape
+                        )
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_send),
+                        contentDescription = "Gửi bình luận",
+                        tint = Color.White,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun InlineCommentItem(
+    comment: Comment,
+    currentUserId: String
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp), // Add consistent vertical padding
+        horizontalArrangement = Arrangement.spacedBy(12.dp) // Increase spacing for better layout
+    ) {
+        // User avatar placeholder
+        Box(
+            modifier = Modifier
+                .size(40.dp) // Keep consistent size
+                .background(
+                    Color.White.copy(alpha = 0.2f),
+                    shape = CircleShape
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = comment.userName.take(1).uppercase(),
+                style = MaterialTheme.typography.bodyMedium, // Use bodyMedium for consistency
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = comment.userName,
+                    style = MaterialTheme.typography.bodyMedium, // Use bodyMedium for consistency
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+
+                Text(
+                    text = formatTimeAgo(comment.time),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.White.copy(alpha = 0.7f)
+                )
+            }
+
+            Text(
+                text = comment.content,
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.White,
+                modifier = Modifier.padding(top = 4.dp) // Increase top padding for better spacing
             )
         }
     }
@@ -353,6 +582,18 @@ private fun CommentBottomSheet(
 
     val comments by commentViewModel.comments.collectAsState()
     val isLoading by commentViewModel.isLoading.collectAsState()
+
+    // Debug logs
+    LaunchedEffect(comments) {
+        Log.d("CommentBottomSheet", "Comments state changed: ${comments.size} comments")
+        comments.forEach { comment ->
+            Log.d("CommentBottomSheet", "Comment in UI: ${comment.userName} - ${comment.content}")
+        }
+    }
+
+    LaunchedEffect(isLoading) {
+        Log.d("CommentBottomSheet", "Loading state changed: $isLoading")
+    }
 
     // Comment input state
     var commentText by remember { mutableStateOf(TextFieldValue("")) }
@@ -407,7 +648,8 @@ private fun CommentBottomSheet(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(vertical = 8.dp) // Add consistent padding
         ) {
             if (isLoading) {
                 item {
@@ -429,7 +671,10 @@ private fun CommentBottomSheet(
                     )
                 }
             } else {
-                items(comments) { comment ->
+                items(
+                    items = comments,
+                    key = { comment -> comment.id } // Add key for better performance
+                ) { comment ->
                     CommentItem(comment = comment, currentUserId = currentUserId)
                 }
             }
@@ -439,22 +684,40 @@ private fun CommentBottomSheet(
 
         // Comment input
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp),
             verticalAlignment = Alignment.Bottom
         ) {
-            OutlinedTextField(
-                value = commentText,
-                onValueChange = { commentText = it },
-                placeholder = { Text("Viết bình luận...") },
-                modifier = Modifier.weight(1f),
-                maxLines = 3,
+            // Simple TextField cho CommentBottomSheet
+            TextField(
+                value = commentText.text,
+                onValueChange = { newText ->
+                    commentText = TextFieldValue(newText)
+                },
+                placeholder = {
+                    Text(
+                        text = "Viết bình luận...",
+                        color = Color.White.copy(alpha = 0.8f)
+                    )
+                },
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = 56.dp),
+                maxLines = 4,
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = MaterialTheme.colorScheme.surface,
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface
-                )
+                    focusedTextColor = BlueOcean, // ✅ Màu xanh BlueOcean khi nhập
+                    unfocusedTextColor = Color.White, // Màu trắng khi không nhập
+                    focusedContainerColor = Color.White.copy(alpha = 0.4f),
+                    unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    cursorColor = BlueOcean // ✅ Cursor cũng màu xanh
+                ),
+                shape = RoundedCornerShape(16.dp)
             )
 
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(12.dp)) // Tăng khoảng cách
 
             IconButton(
                 onClick = {
@@ -467,15 +730,22 @@ private fun CommentBottomSheet(
                         commentText = TextFieldValue("")
                     }
                 },
-                enabled = commentText.text.isNotBlank()
+                enabled = commentText.text.isNotBlank(),
+                modifier = Modifier
+                    .size(56.dp) // Tăng kích thước button
+                    .background(
+                        if (commentText.text.isNotBlank()) BlueOcean else MaterialTheme.colorScheme.surfaceVariant,
+                        shape = CircleShape
+                    )
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_send),
                     contentDescription = "Gửi bình luận",
                     tint = if (commentText.text.isNotBlank())
-                        MaterialTheme.colorScheme.primary
+                        Color.White
                     else
-                        MaterialTheme.colorScheme.onSurfaceVariant
+                        MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(32.dp) // Tăng kích thước icon
                 )
             }
         }
@@ -490,13 +760,15 @@ private fun CommentItem(
     currentUserId: String
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp), // Add consistent vertical padding
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         // User avatar placeholder
         Box(
             modifier = Modifier
-                .size(40.dp)
+                .size(40.dp) // Keep consistent size
                 .background(
                     MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
                     shape = CircleShape
@@ -521,20 +793,22 @@ private fun CommentItem(
                 Text(
                     text = comment.userName,
                     style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White // ✅ Đổi màu tên người dùng sang trắng
                 )
 
                 Text(
                     text = formatTimeAgo(comment.time),
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = Color.White.copy(alpha = 0.7f) // ✅ Đổi màu thời gian sang trắng với độ trong suốt
                 )
             }
 
             Text(
                 text = comment.content,
                 style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 4.dp)
+                color = Color.White, // ✅ Đổi màu chữ sang trắng
+                modifier = Modifier.padding(top = 4.dp) // Consistent padding
             )
         }
     }

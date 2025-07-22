@@ -86,6 +86,7 @@ dependencies {
     implementation(libs.ktor.client.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.datetime)
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
 
     //navigation

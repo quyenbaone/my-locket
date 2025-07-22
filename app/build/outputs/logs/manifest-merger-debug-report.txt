@@ -20,6 +20,7 @@ MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.2] C:\Users\cauva\.g
 MERGED from [androidx.navigation:navigation-compose:2.8.2] C:\Users\cauva\.gradle\caches\8.13\transforms\724c6e9db5dba81f9018c0b10635f523\transformed\navigation-compose-2.8.2\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.accompanist:accompanist-permissions:0.36.0] C:\Users\cauva\.gradle\caches\8.13\transforms\779b12bf35bab034de5759c1a92ca8b9\transformed\accompanist-permissions-0.36.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.compose.material3:material3-android:1.2.1] C:\Users\cauva\.gradle\caches\8.13\transforms\c8fee181df64d1ab73c8df0864ee8b58\transformed\material3-release\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\ab788f6a2a6a3bca9ae0cd4bf3789463\transformed\material-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\65e10574a315e17ac22276a2fd717e81\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.material:material-ripple-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\04f08fb93e7b9dc3f38f5f7ef8f0d8d8\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
@@ -27,7 +28,6 @@ MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.2] C:\Use
 MERGED from [androidx.compose.foundation:foundation-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\25852131ee2daefc4be3a64a25d9b3ce\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-core-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\d4fd5ba76c4eb8c013b3aa2eaf53a1fe\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.animation:animation-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\3bf900a947576421f35124389d102f9d\transformed\animation-release\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\2a1a571994752eb17dbb5b41a52b73b4\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-geometry-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\4a6d4c4a1155eee951a8cc135a6ad653\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\a53dac1cf28f9d51d756dd910b3ef816\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
@@ -71,8 +71,8 @@ MERGED from [androidx.browser:browser:1.8.0] C:\Users\cauva\.gradle\caches\8.13\
 MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\99d5116903a532b1c8ea16749f90b943\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\cauva\.gradle\caches\8.13\transforms\afbeb802ad87d9b36cbef8f78d808a65\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\cauva\.gradle\caches\8.13\transforms\10736c6644fd45ec3f9c468121726ffc\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\78a9a9b6b0fdf725fb618ac074764989\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\87d15c373ca062daec6913fb4e389171\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\98065fbb77a7655003cd6f6aa74142f5\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.13.1] C:\Users\cauva\.gradle\caches\8.13\transforms\efb2d4d9a55876534e92c86384a4b068\transformed\core-1.13.1\AndroidManifest.xml:17:1-30:12
@@ -252,6 +252,8 @@ MERGED from [com.google.accompanist:accompanist-permissions:0.36.0] C:\Users\cau
 MERGED from [com.google.accompanist:accompanist-permissions:0.36.0] C:\Users\cauva\.gradle\caches\8.13\transforms\779b12bf35bab034de5759c1a92ca8b9\transformed\accompanist-permissions-0.36.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.compose.material3:material3-android:1.2.1] C:\Users\cauva\.gradle\caches\8.13\transforms\c8fee181df64d1ab73c8df0864ee8b58\transformed\material3-release\AndroidManifest.xml:20:5-44
 MERGED from [androidx.compose.material3:material3-android:1.2.1] C:\Users\cauva\.gradle\caches\8.13\transforms\c8fee181df64d1ab73c8df0864ee8b58\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\ab788f6a2a6a3bca9ae0cd4bf3789463\transformed\material-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\ab788f6a2a6a3bca9ae0cd4bf3789463\transformed\material-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.material:material-icons-core-android:1.6.6] C:\Users\cauva\.gradle\caches\8.13\transforms\65e10574a315e17ac22276a2fd717e81\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
@@ -266,8 +268,6 @@ MERGED from [androidx.compose.animation:animation-core-android:1.7.2] C:\Users\c
 MERGED from [androidx.compose.animation:animation-core-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\d4fd5ba76c4eb8c013b3aa2eaf53a1fe\transformed\animation-core-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\3bf900a947576421f35124389d102f9d\transformed\animation-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.animation:animation-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\3bf900a947576421f35124389d102f9d\transformed\animation-release\AndroidManifest.xml:5:5-44
-MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
-MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\cauva\.gradle\caches\8.13\transforms\db5fff795fe2b2c12a650382c25768b8\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\2a1a571994752eb17dbb5b41a52b73b4\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\2a1a571994752eb17dbb5b41a52b73b4\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.compose.ui:ui-geometry-android:1.7.2] C:\Users\cauva\.gradle\caches\8.13\transforms\4a6d4c4a1155eee951a8cc135a6ad653\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
@@ -354,10 +354,10 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\cau
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\cauva\.gradle\caches\8.13\transforms\afbeb802ad87d9b36cbef8f78d808a65\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\cauva\.gradle\caches\8.13\transforms\10736c6644fd45ec3f9c468121726ffc\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\cauva\.gradle\caches\8.13\transforms\10736c6644fd45ec3f9c468121726ffc\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\78a9a9b6b0fdf725fb618ac074764989\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\78a9a9b6b0fdf725fb618ac074764989\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\cauva\.gradle\caches\8.13\transforms\da82c5984a25976c003f97f870a03640\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\87d15c373ca062daec6913fb4e389171\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\87d15c373ca062daec6913fb4e389171\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\cauva\.gradle\caches\8.13\transforms\98065fbb77a7655003cd6f6aa74142f5\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44

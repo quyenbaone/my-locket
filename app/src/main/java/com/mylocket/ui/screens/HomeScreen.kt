@@ -127,7 +127,7 @@ fun HomeScreen(
                 IconButton(
                     onClick = { showBottomSheet = true },
                     modifier = Modifier
-                        .size(44.dp)
+                        .size(56.dp)
                         .background(
                             Color.Black.copy(alpha = 0.6f),
                             CircleShape
@@ -136,7 +136,7 @@ fun HomeScreen(
                     Icon(
                         painter = painterResource(id = R.drawable.user),
                         contentDescription = "Profile",
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(50.dp),
                         tint = Color.White
                     )
                 }
@@ -148,7 +148,7 @@ fun HomeScreen(
                         contentColor = Color.White
 
                     ),
-                    shape = RoundedCornerShape(22.dp),
+                    shape = RoundedCornerShape(50.dp),
                     modifier = Modifier
                         .height(44.dp)
                         .widthIn(min = 80.dp),
@@ -169,7 +169,7 @@ fun HomeScreen(
                         navController.navigate("chat")
                     },
                     modifier = Modifier
-                        .size(44.dp)
+                        .size(56.dp)
                         .background(
                             Color.Black.copy(alpha = 0.6f),
                             CircleShape
@@ -178,7 +178,7 @@ fun HomeScreen(
                     Icon(
                         painter = painterResource(id = R.drawable.chat),
                         contentDescription = "Messages",
-                        modifier = Modifier.size(22.dp),
+                        modifier = Modifier.size(50.dp),
                         tint = Color.White
                     )
                 }
