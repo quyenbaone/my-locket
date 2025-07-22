@@ -55,6 +55,9 @@ import com.mylocket.data.User
 import com.mylocket.service.SupabaseDatabaseService
 import com.mylocket.viewmodel.PostViewModel
 import com.mylocket.ui.theme.BlueOcean
+import com.mylocket.ui.theme.CommentTextActive
+import com.mylocket.ui.theme.CommentTextInactive
+import com.mylocket.ui.theme.CommentBackground
 import com.mylocket.viewmodel.PostViewModelFactory
 import com.mylocket.viewmodel.CommentViewModel
 import com.mylocket.viewmodel.CommentViewModelFactory
@@ -461,13 +464,13 @@ private fun InlineCommentsSection(
                         .heightIn(min = 56.dp),
                     maxLines = 3,
                     colors = TextFieldDefaults.colors(
-                        focusedTextColor = BlueOcean, // ✅ Màu xanh BlueOcean khi nhập
-                        unfocusedTextColor = Color.White, // Màu trắng khi không nhập
-                        focusedContainerColor = Color.Gray.copy(alpha = 0.3f),
+                        focusedTextColor = CommentTextActive, // ✅ Sử dụng màu chuyên dụng
+                        unfocusedTextColor = CommentTextInactive, // ✅ Sử dụng màu chuyên dụng
+                        focusedContainerColor = CommentBackground,
                         unfocusedContainerColor = Color.Gray.copy(alpha = 0.2f),
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
-                        cursorColor = BlueOcean // ✅ Cursor cũng màu xanh
+                        cursorColor = CommentTextActive // ✅ Cursor cùng màu với text active
                     ),
                     shape = RoundedCornerShape(16.dp)
                 )
@@ -706,13 +709,13 @@ private fun CommentBottomSheet(
                     .heightIn(min = 56.dp),
                 maxLines = 4,
                 colors = TextFieldDefaults.colors(
-                    focusedTextColor = BlueOcean, // ✅ Màu xanh BlueOcean khi nhập
-                    unfocusedTextColor = Color.White, // Màu trắng khi không nhập
-                    focusedContainerColor = Color.White.copy(alpha = 0.4f),
-                    unfocusedContainerColor = Color.White.copy(alpha = 0.3f),
+                    focusedTextColor = CommentTextActive, // ✅ Sử dụng màu chuyên dụng
+                    unfocusedTextColor = CommentTextInactive, // ✅ Sử dụng màu chuyên dụng
+                    focusedContainerColor = CommentBackground,
+                    unfocusedContainerColor = Color.Gray.copy(alpha = 0.3f),
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    cursorColor = BlueOcean // ✅ Cursor cũng màu xanh
+                    cursorColor = CommentTextActive // ✅ Cursor cùng màu với text active
                 ),
                 shape = RoundedCornerShape(16.dp)
             )

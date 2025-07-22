@@ -27,6 +27,11 @@ val AccentRed = Color(0xFFDA3633)           // Đỏ accent
 val AccentOrange = Color(0xFFD1242F)        // Cam accent
 val AccentPurple = Color(0xFF8957E5)        // Tím accent
 
+// Comment colors - Màu chuyên dụng cho comment
+val CommentTextActive = BlueOcean           // Màu chữ khi đang nhập comment
+val CommentTextInactive = TextPrimaryDark   // Màu chữ khi không nhập comment
+val CommentBackground = Color(0xFF2A2A2A)   // Background cho comment input
+
 // Border colors - Dark theme only
 val BorderDark = Color(0xFF404040)          // Dark gray borders for black theme
 
